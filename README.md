@@ -1,4 +1,4 @@
-<img src="./public/assets/imgs/logo.jpg" width="600px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" width="600px">
 
 _Projeto pessoal para a terceira sprint com o tema de Formula 1, utilizando a api WebDataViz_
 
