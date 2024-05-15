@@ -37,6 +37,17 @@ app.use("/empresas", empresasRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
+    
+    /$$$$$$$$  /$$ /$$$$$$$$ /$$$$$$$$  /$$$$$$  /$$   /$$
+    | $$_____//$$$$|__  $$__/| $$_____/ /$$__  $$| $$  | $$
+    | $$     |_  $$   | $$   | $$      | $$  \__/| $$  | $$
+    | $$$$$    | $$   | $$   | $$$$$   | $$      | $$$$$$$$
+    | $$__/    | $$   | $$   | $$__/   | $$      | $$__  $$
+    | $$       | $$   | $$   | $$      | $$    $$| $$  | $$
+    | $$      /$$$$$$ | $$   | $$$$$$$$|  $$$$$$/| $$  | $$
+    |__/     |______/ |__/   |________/ \______/ |__/  |__/
+                                                                   
+    
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  
     ##   ##  ##       ##  ##            ## ##     ####      ##      ####             ##  ##     ##         ##  
     ##   ##  ##       ##  ##            ##  ##   ##  ##     ##     ##  ##            ##  ##     ##        ##   
@@ -44,7 +55,7 @@ app.listen(PORTA_APP, function () {
     #######  ##       ##  ##            ##  ##   ##  ##     ##     ##  ##            ##  ##     ##      ##     
     ### ###  ##       ##  ##            ## ##    ##  ##     ##     ##  ##             ####      ##     ##      
     ##   ##  ######   #####             ####     ##  ##     ##     ##  ##              ##      ####    ######  
-    \n\n\n                                                                                                 
+    \n\n\n                 
     Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar .: http://${HOST_APP}:${PORTA_APP} :. \n\n
     Você está rodando sua aplicação em ambiente de .:${process.env.AMBIENTE_PROCESSO}:. \n\n
     \tSe .:desenvolvimento:. você está se conectando ao banco local. \n

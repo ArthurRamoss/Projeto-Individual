@@ -156,12 +156,12 @@ text-shadow: 0px 0px 15px black;
 
 .card {
   width: 50%;
-  background-color: #e5e5e5;
+  background-color: rgba(0,0,0,0.5);
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: #cd3532;
   flex-direction: column;
   height: fit-content;
   padding: 20px 0;
@@ -186,7 +186,7 @@ text-shadow: 0px 0px 15px black;
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  border: 2px solid #cd3532;
   text-align: center;
   border-radius: 10px;
   margin: 0;
