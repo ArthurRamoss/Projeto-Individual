@@ -6,6 +6,14 @@
 comandos para mysql server
 */
 
+-- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
+-- Você precisa executar os comandos no banco de dados para criar as tabelas,
+-- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+
+/*
+comandos para mysql server
+*/
+
 CREATE DATABASE f1;
 
 USE f1;
@@ -29,6 +37,7 @@ CREATE TABLE usuario (
 	nome VARCHAR(50),
 	email VARCHAR(50),
 	senha VARCHAR(50),
+    imgPerfil VARCHAR(100),
 	fkEquipe INT,
     fkPiloto INT,
 	FOREIGN KEY (fkEquipe) REFERENCES equipe(idEquipe),
@@ -59,7 +68,7 @@ insert into equipe values
 (default, "Haas"),
 (default, "Williams"),
 (default, "Alpine"),
-(default, "Stake Kick Sauber");
+(default, "Kick Sauber");
 
 insert into piloto values 
 (16, "Charles Leclerc", "1997-10-16", null, 1),

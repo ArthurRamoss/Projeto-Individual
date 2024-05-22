@@ -25,7 +25,7 @@
           <a href="index.html">Inicial</a>
         </li>
         <li>
-          <a href="simulador.html">Simulador</a>
+          <a href="ranking.html">Ranking</a>
         </li>
         <li>|</li>
         <li>
@@ -54,9 +54,46 @@
                          Assim que inserir vá para o script abaixo.
                      -->
           <div class="campo">
-            <span>Empresa:</span>
-            <select name="empresas" id="listaEmpresas">
-              <option selected>Selecione uma empresa</option>
+            <span>Equipe Favorito:</span>
+            <select name="equipes" id="listaEquipes">
+              <option value="#">Selecione seu time favorito!</option>
+              <!-- <option value="Ferrari">Ferrari</option>
+              <option value="Red Bull">Red Bull</option>
+              <option value="McLaren">McLaren</option>
+              <option value="Mercedes">Mercedes</option>
+              <option value="Aston Martin">Aston Martin</option>
+              <option value="RB Visa CashApp">RB Visa CashApp</option>
+              <option value="Haas">Haas</option>  
+              <option value="Alpine">Alpine</option>
+              <option value="Williams">Williams</option>
+              <option value="Kick Sauber">Kick Sauber</option> -->
+            </select>
+          </div>
+          <div class="campo">
+            <span>Piloto Favorito:</span>
+            <select name="pilotos" id="listaPilotos">
+              <option value="#">Selecione seu Piloto favorito!</option>
+              <!-- <option value="Charles Leclerc">Charles Leclerc</option>
+              <option value="Red Bull">Red Bull</option>
+              <option value="McLaren">McLaren</option>
+              <option value="Mercedes">Mercedes</option>
+              <option value="Aston Martin">Aston Martin</option>
+              <option value="RB Visa CashApp">RB Visa CashApp</option>
+              <option value="Haas">Haas</option>
+              <option value="Alpine">Alpine</option>
+              <option value="Williams">Williams</option>
+              <option value="Kick Sauber">Kick Sauber</option>
+              <option value="#">Selecione seu Piloto favorito!</option>
+              <option value="Ferrari">Ferrari</option>
+              <option value="Red Bull">Red Bull</option>
+              <option value="McLaren">McLaren</option>
+              <option value="Mercedes">Mercedes</option>
+              <option value="Aston Martin">Aston Martin</option>
+              <option value="RB Visa CashApp">RB Visa CashApp</option>
+              <option value="Haas">Haas</option>
+              <option value="Alpine">Alpine</option>
+              <option value="Williams">Williams</option>
+              <option value="Kick Sauber">Kick Sauber</option> -->
             </select>
           </div>
           <div class="campo">
@@ -74,6 +111,10 @@
           <div class="campo">
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
+          </div>
+          <div class="campo">
+            <span>Link da foto de perfil</span>
+            <input id="imgPerfil_input" type="text" placeholder="Insira o link aqui*" />
           </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
@@ -108,13 +149,17 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var empresaVar = listaEmpresas.value
+    var equipeVar = listaEquipes.value
+    var pilotoVar = listaPilotos.value
+    var imgPerfilVar = imgPerfil_input.value
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      empresaVar == ""
+      equipeVar == "" ||
+      pilotoVar == "" ||
+      imgPerfilVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -122,9 +167,52 @@
 
       finalizarAguardar();
       return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
+    } else if (nomeVar.length <= 1) {
+
+        cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(O nome é muito pequeno)";
+
+      finalizarAguardar();
+      return false;
+    } else if (emailVar.indexOf("@") < 0 || emailVar.indexOf(".") < 0){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(o seu email não contem @ ou .)";
+
+      finalizarAguardar();
+      return false;
+    } else if (senhaVar =! confirmacaoSenhaVar){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(as suas senha não estão iguais)";
+
+      finalizarAguardar();
+      return false;
+    } else if (pilotoVar == ""){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Você precisa escolher um piloto favorito)";
+
+      finalizarAguardar();
+      return false;
+    } else if (equipeVar == ""){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Você precisa escolher uma equipe favorita)";
+
+      finalizarAguardar();
+      return false;
+    } else if (imgPerfilVar == ""){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Você precisa inserir o link para sua foto de perfil)";
+
+      finalizarAguardar();
+      return false;
+     } else {
+        setInterval(sumirMensagem, 5000);
+      }
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -138,7 +226,9 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        empresaServer: empresaVar
+        pilotoServer: pilotoVar,
+        equipeServer: equipeVar,
+        imgPerfilServer: imgPerfilVar
       }),
     })
       .then(function (resposta) {
@@ -169,13 +259,26 @@
   }
 
   function listar() {
-    fetch("/empresas/listar", {
+    fetch("/equipe/listar", {
       method: "GET",
     })
       .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+        resposta.json().then((equipe) => {
+          equipe.forEach((equipe) => {
+            listaEquipes.innerHTML += `<option value='${equipe.idEquipe}'>${equipe.nome}</option>`;
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+      fetch("/piloto/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((piloto) => {
+          piloto.forEach((piloto) => {
+            listaPilotos.innerHTML += `<option value='${piloto.NumPiloto}'>${piloto.nome}</option>`;
           });
         });
       })
@@ -187,4 +290,5 @@
   function sumirMensagem() {
     cardErro.style.display = "none";
   }
+
 </script>
