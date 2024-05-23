@@ -13,6 +13,38 @@
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <style>
+        /* Adicione estilos personalizados aqui */
+        .podio {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+
+        .podio .box {
+            width: 30%;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .lista-ranking {
+            margin-top: 50px;
+        }
+
+        .lista-ranking ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .lista-ranking li {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,8 +52,8 @@
     <!--header inicio-->
     <div class="header">
         <div class="container">
-          <img src="./assets/imgs/logo.png">
-          <ul class="navbar">
+            <img src="./assets/imgs/logo.png">
+            <ul class="navbar">
                 <li>
                     <a href="./index.html">Inicial</a>
                 </li>
@@ -36,20 +68,38 @@
             </ul>
         </div>
     </div>
+    <!--header fim-->
 
-
-    <!-- simulador inicio -->
-    <div class="simulador">
-        <div class="container">
-            <div class="boxes">
-                <div class="box p2">A</div>
-                <div class="box p1">B</div>
-                <div class="box p3">C</div>
+<!-- Lista de classificação -->
+<div class="lista-ranking">
+    <div class="podio">
+        <!-- Segundo colocado -->
+        <div class="box p2">
+            <h2>2º Lugar</h2>
+            <!-- Aqui você pode exibir os dados do segundo colocado -->
+            <div id="segundoColocado" class="competidor"></div>
+            <!-- Primeiro colocado -->
+            <div class="box p1">
+                <h2>1º Lugar</h2>
+                <!-- Aqui você pode exibir os dados do primeiro colocado -->
+                <div id="primeiroColocado" class="competidor"></div>
             </div>
         </div>
+        <!-- Terceiro colocado -->
+        <div class="box p3">
+            <h2>3º Lugar</h2>
+            <!-- Aqui você pode exibir os dados do terceiro colocado -->
+            <div id="terceiroColocado" class="competidor"></div>
+        </div>
     </div>
-    
-    <!-- simulador fim -->
+    <div class="container">
+        <h2>Outros Competidores</h2>
+        <!-- Adicione um ID para facilitar a seleção -->
+        <ul id="listaCompetidores" class="competidores">
+            <!-- Aqui você pode preencher dinamicamente com os outros competidores -->
+        </ul>
+    </div>
+</div>
 
     <!--footer inicio-->
     <div class="footer">
@@ -60,7 +110,88 @@
     </div>
     <!--footer fim-->
 
-
 </body>
 
 </html>
+
+<script>
+    // Função para buscar e preencher dinamicamente a lista de competidores
+    function carregarRanking() {
+        fetch("/ranking/obterRanking")
+            .then(response => response.json())
+            .then(data => preencherCompetidores(data))
+            .catch(error => console.error('Erro ao obter ranking:', error));
+    }
+
+    // Função para preencher a lista de competidores com os dados do ranking
+    function preencherCompetidores(ranking) {
+        const listaCompetidores = document.getElementById('listaCompetidores');
+        listaCompetidores.innerHTML = ''; // Limpar a lista antes de preencher
+
+        ranking.forEach((competidor, index) => {
+            // Criar um novo item de lista
+            const li = document.createElement('li');
+            li.classList.add('competidor');
+
+            // Preencher o item de lista com os dados do competidor
+            li.innerHTML = `
+                <img src="${competidor.imgPerfil}" alt="Imagem de Perfil">
+                <span>${competidor.nome}</span>
+                <span>Número Piloto: ${competidor.numPiloto}</span>
+                <span>Equipe: ${competidor.equipe}</span>
+                <span>Pontuação: ${competidor.total_acertos}</span>
+                <span>Tempo: ${competidor.melhor_tempo}</span>
+            `;
+
+            // Adicionar o item de lista à lista de competidores
+            listaCompetidores.appendChild(li);
+
+            // Se for um dos três primeiros colocados, atualizar os elementos correspondentes
+            if (index === 0) {
+                preencherPrimeiroColocado(competidor);
+            } else if (index === 1) {
+                preencherSegundoColocado(competidor);
+            } else if (index === 2) {
+                preencherTerceiroColocado(competidor);
+            }
+        });
+    }
+
+    // Função para preencher os dados do primeiro colocado
+    function preencherPrimeiroColocado(competidor) {
+        const primeiroColocado = document.getElementById('primeiroColocado');
+        primeiroColocado.innerHTML = `
+            <img src="${competidor.imgPerfil}" alt="Imagem de Perfil">
+            <span>${competidor.nome}</span>
+            <span>Número Piloto: ${competidor.numPiloto}</span>
+            <span>Equipe: ${competidor.equipe}</span>
+            <span>Pontuação: ${competidor.total_acertos}</span>
+            <span>Tempo: ${competidor.melhor_tempo}</span>
+        `;
+    }
+
+    // Função para preencher os dados do segundo colocado
+    function preencherSegundoColocado(competidor) {
+        const segundoColocado = document.getElementById('segundoColocado');
+        segundoColocado.innerHTML = `
+            <img src="${competidor.imgPerfil}" alt="Imagem de Perfil">
+            <span>${competidor.nome}</span>
+            <span>Número Piloto: ${competidor.numPiloto}</span>
+            <span>Equipe: ${competidor.equipe}</span>
+            <span>Pontuação: ${competidor.total_acertos}</span>
+            <span>Tempo: ${competidor.melhor_tempo}</span>
+        `;
+    }
+
+    // Função para preencher os dados do terceiro colocado
+    function preencherTerceiroColocado(competidor) {
+        const terceiroColocado = document.getElementById('terceiroColocado');
+        terceiroColocado.innerHTML = `
+            <img src="${competidor.imgPerfil}" alt="Imagem de Perfil">
+            <span>${competidor.nome}</span>
+            <span>Número Piloto: ${competidor.numPiloto}</span>
+            <span>Equipe: ${competidor.equipe}</span>
+            <span>Pontuação: ${competidor.total_acertos}</span>
+            <span>Tempo: ${competidor.melhor_tempo}</span>
+        `;
+    }
