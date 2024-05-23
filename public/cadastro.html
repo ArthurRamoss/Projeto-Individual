@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body onload="listar()">
+<body onload="listarEquipes(), listarPilotos()">
   <!--header inicio-->
   <div class="header">
     <div class="container">
@@ -258,14 +258,14 @@
     return false;
   }
 
-  function listarEquipe() {
+  function listarEquipes() {
     fetch("/equipe/listarEquipe", {
       method: "GET",
     })
       .then(function (resposta) {
         resposta.json().then((equipe) => {
           equipe.forEach((equipe) => {
-            listaEquipe.innerHTML += `<option value='${equipe.idEquipe}'>${equipe.nome}</option>`;
+            listaEquipes.innerHTML += `<option value='${equipe.idEquipe}'>${equipe.nome}</option>`;
           });
         });
       })
