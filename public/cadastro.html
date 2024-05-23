@@ -215,7 +215,7 @@
       }
 
     // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
+    fetch("/usuario/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -258,27 +258,30 @@
     return false;
   }
 
-  function listar() {
-    fetch("/equipe/listar", {
+  function listarEquipe() {
+    fetch("/equipe/listarEquipe", {
       method: "GET",
     })
       .then(function (resposta) {
         resposta.json().then((equipe) => {
           equipe.forEach((equipe) => {
-            listaEquipes.innerHTML += `<option value='${equipe.idEquipe}'>${equipe.nome}</option>`;
+            listaEquipe.innerHTML += `<option value='${equipe.idEquipe}'>${equipe.nome}</option>`;
           });
         });
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
       });
-      fetch("/piloto/listar", {
+  }
+
+  function listarPilotos() {
+    fetch("/piloto/listarPiloto", {
       method: "GET",
     })
       .then(function (resposta) {
         resposta.json().then((piloto) => {
           piloto.forEach((piloto) => {
-            listaPilotos.innerHTML += `<option value='${piloto.NumPiloto}'>${piloto.nome}</option>`;
+            listaPilotos.innerHTML += `<option value='${piloto.idPiloto}'>${piloto.nome} - Numero ${piloto.NumPiloto}</option>`;
           });
         });
       })
