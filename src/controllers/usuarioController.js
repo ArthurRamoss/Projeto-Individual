@@ -22,7 +22,8 @@ function autenticar(req, res) {
                         id: usuario.idUsuario,
                         email: usuario.email,
                         nome: usuario.nome,
-                        senha: usuario.senha
+                        senha: usuario.senha,
+                        imgPerfil: usuario.imgPerfil
                     });
                 } else if (resultadoAutenticar.length == 0) {
                     res.status(403).send("Email e/ou senha inválido(s)");
@@ -30,23 +31,23 @@ function autenticar(req, res) {
                     res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                 }
             }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
             );
     }
 }
 
 function cadastrar(req, res) {
+    var fkEquipe = req.body.fkEquipeServer;
+    var fkPiloto = req.body.fkPilotoServer;
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var imgPerfil = req.body.imgPerfilServer;
-    var equipe = req.body.equipeServer;
-    var piloto = req.body.pilotoServer;
 
 
     if (nome == undefined) {
@@ -55,14 +56,14 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if (equipe == undefined) {
+    } else if (fkEquipe == undefined) {
         res.status(400).send("Sua equipe está undefined!");
-    } else if (piloto == undefined) {
+    } else if (fkPiloto == undefined) {
         res.status(400).send("Seu piloto está undefined!");
     } else if (imgPerfil == undefined) {
-        res.status(400).send("Sua foto de perfil está undefined!");
+        res.status(400).send("Sua foto de perfil está undefined!");}
 
-        usuarioModel.cadastrar(nome, email, senha, equipe, piloto, imgPerfil)
+        usuarioModel.cadastrar(fkEquipe, fkPiloto, nome, email, senha, imgPerfil)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -78,7 +79,7 @@ function cadastrar(req, res) {
                 }
             );
     }
-}
+
 
 
 module.exports = {

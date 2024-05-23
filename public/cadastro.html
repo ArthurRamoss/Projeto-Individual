@@ -49,51 +49,18 @@
       <div class="card card-cadastro">
         <h2>Bem-vindo!</h2>
         <div class="formulario">
-          <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
           <div class="campo">
             <span>Equipe Favorito:</span>
             <select name="equipes" id="listaEquipes">
               <option value="#">Selecione seu time favorito!</option>
-              <!-- <option value="Ferrari">Ferrari</option>
-              <option value="Red Bull">Red Bull</option>
-              <option value="McLaren">McLaren</option>
-              <option value="Mercedes">Mercedes</option>
-              <option value="Aston Martin">Aston Martin</option>
-              <option value="RB Visa CashApp">RB Visa CashApp</option>
-              <option value="Haas">Haas</option>  
-              <option value="Alpine">Alpine</option>
-              <option value="Williams">Williams</option>
-              <option value="Kick Sauber">Kick Sauber</option> -->
+              <!-- Opções serão dinamicamente puxadas do banco de dados-->
             </select>
           </div>
           <div class="campo">
             <span>Piloto Favorito:</span>
             <select name="pilotos" id="listaPilotos">
               <option value="#">Selecione seu Piloto favorito!</option>
-              <!-- <option value="Charles Leclerc">Charles Leclerc</option>
-              <option value="Red Bull">Red Bull</option>
-              <option value="McLaren">McLaren</option>
-              <option value="Mercedes">Mercedes</option>
-              <option value="Aston Martin">Aston Martin</option>
-              <option value="RB Visa CashApp">RB Visa CashApp</option>
-              <option value="Haas">Haas</option>
-              <option value="Alpine">Alpine</option>
-              <option value="Williams">Williams</option>
-              <option value="Kick Sauber">Kick Sauber</option>
-              <option value="#">Selecione seu Piloto favorito!</option>
-              <option value="Ferrari">Ferrari</option>
-              <option value="Red Bull">Red Bull</option>
-              <option value="McLaren">McLaren</option>
-              <option value="Mercedes">Mercedes</option>
-              <option value="Aston Martin">Aston Martin</option>
-              <option value="RB Visa CashApp">RB Visa CashApp</option>
-              <option value="Haas">Haas</option>
-              <option value="Alpine">Alpine</option>
-              <option value="Williams">Williams</option>
-              <option value="Kick Sauber">Kick Sauber</option> -->
+              <!-- Opções serão dinamicamente puxadas do banco de dados-->
             </select>
           </div>
           <div class="campo">
@@ -145,90 +112,79 @@
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
+    var fkEquipeVar = listaEquipes.value
+    var fkPilotoVar = listaPilotos.value
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var equipeVar = listaEquipes.value
-    var pilotoVar = listaPilotos.value
     var imgPerfilVar = imgPerfil_input.value
     if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      equipeVar == "" ||
-      pilotoVar == "" ||
-      imgPerfilVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+  fkEquipeVar === "" ||
+  fkPilotoVar === "" ||
+  nomeVar === "" ||
+  emailVar === "" ||
+  senhaVar === "" ||
+  confirmacaoSenhaVar === "" ||
+  imgPerfilVar === ""
+) {
+  cardErro.style.display = "block";
+  mensagem_erro.innerHTML = "Todos os campos devem ser preenchidos.";
 
-      finalizarAguardar();
-      return false;
-    } else if (nomeVar.length <= 1) {
+  finalizarAguardar();
+  return false;
+} else if (nomeVar.length <= 1) {
+  cardErro.style.display = "block";
+  mensagem_erro.innerHTML = "O nome é muito curto.";
 
-        cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(O nome é muito pequeno)";
+  finalizarAguardar();
+  return false;
+} else if (emailVar.indexOf("@") < 0 || emailVar.indexOf(".") < 0) {
+  cardErro.style.display = "block";
+  mensagem_erro.innerHTML = "O email não é válido.";
 
-      finalizarAguardar();
-      return false;
-    } else if (emailVar.indexOf("@") < 0 || emailVar.indexOf(".") < 0){
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(o seu email não contem @ ou .)";
+  finalizarAguardar();
+  return false;
+} else if (senhaVar !== confirmacaoSenhaVar) {
+  cardErro.style.display = "block";
+  mensagem_erro.innerHTML = "As senhas não coincidem.";
 
-      finalizarAguardar();
-      return false;
-    } else if (senhaVar =! confirmacaoSenhaVar){
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(as suas senha não estão iguais)";
+  finalizarAguardar();
+  return false;
+} else if (fkPilotoVar === "") {
+  cardErro.style.display = "block";
+  mensagem_erro.innerHTML = "Você precisa escolher um piloto favorito.";
 
-      finalizarAguardar();
-      return false;
-    } else if (pilotoVar == ""){
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Você precisa escolher um piloto favorito)";
+  finalizarAguardar();  
+  return false;
+} else if (fkEquipeVar === "") {
+  cardErro.style.display = "block";
+  mensagem_erro.innerHTML = "Você precisa escolher uma equipe favorita.";
 
-      finalizarAguardar();
-      return false;
-    } else if (equipeVar == ""){
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Você precisa escolher uma equipe favorita)";
+  finalizarAguardar();
+  return false;
+} else if (imgPerfilVar === "") {
+  cardErro.style.display = "block";
+  mensagem_erro.innerHTML = "Você precisa inserir o link para sua foto de perfil.";
 
-      finalizarAguardar();
-      return false;
-    } else if (imgPerfilVar == ""){
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Você precisa inserir o link para sua foto de perfil)";
+  finalizarAguardar();
+  return false;
+} else {
+  setInterval(sumirMensagem, 5000);
+}
 
-      finalizarAguardar();
-      return false;
-     } else {
-        setInterval(sumirMensagem, 5000);
-      }
-
-    // Enviando o valor da nova input
-    fetch("/usuario/cadastrar", {
+    fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
+        fkEquipeServer: fkEquipeVar,
+        fkPilotoServer: fkPilotoVar,
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        pilotoServer: pilotoVar,
-        equipeServer: equipeVar,
-        imgPerfilServer: imgPerfilVar
+        imgPerfilServer: imgPerfilVar,
       }),
     })
       .then(function (resposta) {
