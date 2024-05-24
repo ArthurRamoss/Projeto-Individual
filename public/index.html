@@ -15,31 +15,60 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <style>
       /* Estilos para layout da história da Fórmula 1 */
-      .history {
-          background-color: #f9f9f9;
-          padding: 20px;
-          overflow: hidden; /* Limpa o float */
-      }
+      .section {
+            background-color: #f9f9f9;
+        }
 
-      .history .container {
-          max-width: 960px;
-          margin: 0 auto;
-          padding: 0 15px;
-      }
+        .section .container {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
 
-      .history h2 {
-          color: #333;
-          font-size: 24px;
-          margin-bottom: 15px;
-      }
+        .section img {
+            max-width: 200px;
+            border-radius: 10px;
+            margin-left: auto; /* Move image to the right */
+        }
 
-      .history p {
-          color: #666;
-          font-size: 16px;
-          line-height: 1.6;
-          margin-bottom: 10px;
-      }
-  </style>
+        .section .content {
+            max-width: 70%;
+        }
+
+        .section .content h2 {
+            color: #333;
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .section .content p {
+            color: #666;
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .logo-equipe {
+  max-width: 50px;
+  margin-left: 10px;
+}
+
+.logo-numero {
+  max-width: 50px;
+  margin-top: 10px;
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.images img {
+  margin: 5px 0;
+}
+
+    </style>
 </head>
 
 <body>
@@ -67,33 +96,28 @@
     <div class="banner">
       <div class="container">
         <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
-      </div>
-    </div>
-  
-    <div class="history">
-      <div class="container">
-        <h2>História da Fórmula 1</h2>
-        <p>A Fórmula 1, considerada o pináculo do automobilismo, teve suas raízes fincadas na Europa no pós-guerra. Em 1946, a Federação Internacional do Automóvel (FIA) foi fundada, e em 1950, o primeiro Campeonato Mundial de Pilotos de Fórmula 1 foi realizado. O Grande Prêmio da Grã-Bretanha, em Silverstone, marcou o início dessa era emocionante.</p>
-        
-        <p>A década de 1950 viu o domínio de lendas como Juan Manuel Fangio e Alberto Ascari. As corridas eram marcadas pela bravura e perigos, com carros abertos, pouca segurança e pistas desafiadoras. Fangio venceu cinco campeonatos durante essa década, um recorde que perdurou por décadas.</p>
-        
-        <p>Nos anos 1960, a Fórmula 1 testemunhou uma série de inovações técnicas e mudanças regulatórias. A Lotus introduziu o uso de aerodinâmica para melhorar o desempenho dos carros, enquanto pilotos carismáticos como Jim Clark e Graham Hill se destacaram nas pistas.</p>
-        
-        <p>Os anos 1970 foram marcados pela rivalidade épica entre Niki Lauda e James Hunt, retratada no filme "Rush". Lauda sobreviveu a um terrível acidente em Nürburgring e voltou às pistas apenas seis semanas depois. A década também viu o surgimento da equipe Ferrari como uma força dominante.</p>
-        
-        <p>Nos anos 1980, Ayrton Senna e Alain Prost dominaram a Fórmula 1, travando batalhas intensas nas pistas. Senna, com sua habilidade notável em pistas molhadas e pilotagem agressiva, tornou-se uma lenda do esporte, enquanto Prost era conhecido por sua abordagem calculada e estratégica.</p>
-        
-        <p>O advento dos anos 1990 trouxe mudanças significativas, incluindo avanços tecnológicos e um aumento na segurança dos carros. Michael Schumacher emergiu como uma força dominante, conquistando sete títulos mundiais e estabelecendo uma série de recordes que ainda perduram.</p>
-        
-        <p>No novo milênio, surgiram novos talentos como Lewis Hamilton, que igualou e superou muitos dos recordes estabelecidos por seus predecessores. A tecnologia tornou-se ainda mais importante, com o desenvolvimento de carros híbridos e o aumento da conectividade entre equipes e fãs.</p>
-        
-        <p>Hoje, a Fórmula 1 é uma mistura emocionante de tradição e inovação, com uma audiência global e uma presença marcante nas mídias sociais. As equipes continuam a buscar novas formas de ganhar vantagem competitiva, enquanto os pilotos buscam superar seus próprios limites em cada corrida.</p>
-        
-        <p>Desde seu modesto início na década de 1950 até se tornar um dos esportes mais assistidos do mundo, a Fórmula 1 continua a inspirar milhões de pessoas ao redor do mundo com sua velocidade, drama e emoção.</p>
+        <a href="#history" class="button">Conheça mais sobre a história da Fórmula 1</a>
       </div>
     </div>
     
-  
+    <div id="piloto-template" class="section piloto">
+      <div class="container">
+          <div class="content">
+              <h2>Nome do Piloto</h2>
+              <p><strong>Data de nascimento:</strong> XX/xx/xx </p>
+              <p><strong>Equipe Atual:</strong> Nome da Equipe</p>
+              <p><strong>História:</strong></p>
+              <p><strong></strong></p>
+              <p>Breve descrição da história do piloto, conquistas, e detalhes importantes sobre sua carreira.</p>
+          </div>
+          <img src="../public/assets/imgs/av5.png" alt="Nome do Piloto">
+      </div>
+  </div>
+    
+  <div id="piloto-template" class="section piloto">
+    <!-- Conteúdo será preenchido via JavaScript -->
+  </div>
+
     <div class="footer">
       <div class="container">
         <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
@@ -103,3 +127,94 @@
   </body>
 
 </html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", async function () {
+      try {
+          // Chama as funções de listagem de pilotos e equipes e espera que ambas sejam concluídas
+          await Promise.all([listarPilotos(), listarEquipes()]);
+  
+          // Após ambas as listas estarem preenchidas, preenche o template
+          preencherTemplate();
+      } catch (error) {
+          console.error("Erro ao carregar dados:", error);
+      }
+  })
+  
+  let equipesData = {};
+  
+  function listarEquipes() {
+      return fetch("/equipe/listarEquipe", {
+          method: "GET",
+      })
+      .then(function (resposta) {
+          return resposta.json();
+      })
+      .then((equipes) => {
+          equipes.forEach((equipe) => {
+              // Armazenar as informações das equipes em um objeto usando o ID da equipe como chave
+              equipesData[equipe.idEquipe] = equipe;
+          });
+      })
+      .catch(function (erro) {
+          console.error(`#ERRO: ${erro}`);
+      });
+  }
+  
+  let pilotosData = [];
+  
+  function listarPilotos() {
+      return fetch('/piloto/listarPiloto', {
+          method: 'GET',
+      })
+      .then(function (resposta) {
+          return resposta.json();
+      })
+      .then((pilotos) => {
+          pilotosData = pilotos;
+      })
+      .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function formatarData(data) {
+    // Função para formatar a data no formato desejado (XX/xx/xx)
+    const dataObj = new Date(data);
+    const dia = dataObj.getDate().toString().padStart(2, '0');
+    const mes = (dataObj.getMonth() + 1).toString().padStart(2, '0');
+    const ano = dataObj.getFullYear().toString();
+    return `${dia}/${mes}/${ano}`;
+}
+  
+function preencherTemplate() {
+    const pilotoContainer = document.getElementById('piloto-template');
+    pilotoContainer.innerHTML = ''; // Limpa o conteúdo do template
+
+    pilotosData.forEach((piloto) => {
+        // Verificar se o piloto tem uma equipe atribuída (fkEquipe)
+        if (piloto.fkEquipe) {
+            const equipe = equipesData[piloto.fkEquipe]; // Recupera os dados da equipe correspondente
+            const pilotoDiv = document.createElement('div');
+            pilotoDiv.classList.add('container');
+            pilotoDiv.innerHTML = `
+                <div class="content">
+                    <h2>${piloto.nome}</h2>
+                    <p><strong>Data de nascimento:</strong> ${formatarData(piloto.dataNasc)}</p>
+                    <p><strong>Numero:</strong> ${piloto.NumPiloto}</p>
+                    <p><strong>Equipe Atual:</strong> ${equipe.nome} </p>
+                    <p><strong>Títulos:</strong> ${piloto.titulos || 0}</p>
+                    <p><strong>História:</strong></p>
+                    <p>${piloto.historia}</p>
+                </div>
+                <div class="images">
+                    <img src="${piloto.imgPiloto}" alt="${piloto.nome}">
+                    <img src="${piloto.imgNumPiloto}" class="logo-numero">
+                    <img src="${equipe.logo}" class="logo-equipe">
+                </div>
+            `;
+            pilotoContainer.appendChild(pilotoDiv);
+        }
+    });
+}
+  </script>
