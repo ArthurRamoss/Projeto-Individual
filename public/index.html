@@ -15,59 +15,85 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <style>
       /* Estilos para layout da história da Fórmula 1 */
+
       .section {
-            background-color: #f9f9f9;
-        }
-
-        .section .container {
-            max-width: 960px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-        }
-
-        .section img {
-            max-width: 200px;
-            border-radius: 10px;
-            margin-left: auto; /* Move image to the right */
-        }
-
-        .section .content {
-            max-width: 70%;
-        }
-
-        .section .content h2 {
-            color: #333;
-            font-size: 50px;
-            margin-bottom: 10px;
-        }
-
-        .section .content p {
-            color: #666;
-            font-size: 20px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .logo-equipe {
-  max-width: 50px;
-  margin-left: 10px;
+    background-color: #f9f9f9;
 }
 
-.logo-numero {
-  max-width: 50px;
-  margin-top: 10px;
+.section .container {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section .content, .historia {
+    max-width: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.section .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.section .info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.section .info h2 {
+    color: #333;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.section .info p {
+    color: #666;
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.img-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
 }
 
 .images {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 10px;
 }
 
-.images img {
-  margin: 5px 0;
+.img-piloto {
+    width: 300px;
+    margin-bottom: 10px;
 }
 
+.logo-numero, .logo-equipe {
+    max-width: 80px;
+}
+
+.section .historia {
+    color: #666;
+    font-size: 20px;
+    line-height: 1.6;
+    margin-top: -60px;
+    width: 100%;
+}
     </style>
 </head>
 
@@ -101,22 +127,30 @@
     </div>
     
     <div id="piloto-template" class="section piloto">
-      <div class="container">
+
+    <!-- Conteúdo será preenchido via JavaScript -->
+      <!-- <div class="container">
           <div class="content">
               <h2>Nome do Piloto</h2>
               <p><strong>Data de nascimento:</strong> XX/xx/xx </p>
-              <p><strong>Equipe Atual:</strong> Nome da Equipe</p>
+              <p><strong>Numero:</strong> 38</p>
+              <p><strong>Equipe Atual:</strong> Ferrari </p>
+              <p><strong>Títulos:</strong> 0</p>
               <p><strong>História:</strong></p>
-              <p><strong></strong></p>
-              <p>Breve descrição da história do piloto, conquistas, e detalhes importantes sobre sua carreira.</p>
+              <p>Born in the Mediterranean idyll of Monaco, Leclerc arrived in F1 on a tidal wave of expectation.
+
+                Practically peerless on his way to the GP3 and Formula 2 crowns, he showcased a dazzling array of skills from scorching pole positions, commanding victories – even when his car caught fire twice at Silverstone – to an ability to muscle his way through the pack. Winning back-to-back championships also taught Leclerc how to handle pressure, another useful tool in the big pond of Formula 1 racing.
+                
+                Stepping up to F1 in 2018, Leclerc showed flashes of ballistic pace on Saturdays and racing brilliance on Sundays, dragging his Sauber beyond its limits – and earning himself a money-can’t-buy race seat at Ferrari for 2019, stepping into the shoes of the Scuderia’s last world champion, Kimi Raikkonen.</p>
           </div>
-          <img src="../public/assets/imgs/av5.png" alt="Nome do Piloto">
-      </div>
+          <div class="images">
+              <img src="https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.png" class="img-piloto">
+              <img src="https://media.formula1.com/d_default_fallback_image.png/content/dam/fom-website/2018-redesign-assets/drivers/number-logos/CHALEC01.png" class="logo-numero">
+              <img src="https://media.formula1.com/content/dam/fom-website/teams/2024/ferrari-logo.png" class="logo-equipe">
+          </div>
+      </div> -->
   </div>
-    
-  <div id="piloto-template" class="section piloto">
-    <!-- Conteúdo será preenchido via JavaScript -->
-  </div>
+
 
     <div class="footer">
       <div class="container">
@@ -198,19 +232,25 @@ function preencherTemplate() {
             const pilotoDiv = document.createElement('div');
             pilotoDiv.classList.add('container');
             pilotoDiv.innerHTML = `
-                <div class="content">
-                    <h2>${piloto.nome}</h2>
-                    <p><strong>Data de nascimento:</strong> ${formatarData(piloto.dataNasc)}</p>
-                    <p><strong>Numero:</strong> ${piloto.NumPiloto}</p>
-                    <p><strong>Equipe Atual:</strong> ${equipe.nome} </p>
-                    <p><strong>Títulos:</strong> ${piloto.titulos || 0}</p>
+            <div class="content">
+                    <div class="info">
+                        <h2>${piloto.nome}</h2>
+                        <p><strong>Data de nascimento:</strong> ${formatarData(piloto.dataNasc)}</p>
+                        <p><strong>Numero:</strong> ${piloto.NumPiloto}</p>
+                        <p><strong>Equipe Atual:</strong> ${equipe.nome}</p>
+                        <p><strong>Títulos:</strong> ${piloto.titulos || 0}</p>
+                    </div>
+                    <div class="img-container">
+                        <img src="${piloto.imgPiloto}" class="img-piloto">
+                        <div class="images">
+                            <img src="${piloto.imgNumPiloto}" class="logo-numero">
+                            <img src="${equipe.logo}" class="logo-equipe">
+                        </div>
+                    </div>
+                </div>
+                <div class="historia">
                     <p><strong>História:</strong></p>
                     <p>${piloto.historia}</p>
-                </div>
-                <div class="images">
-                    <img src="${piloto.imgPiloto}" alt="${piloto.nome}">
-                    <img src="${piloto.imgNumPiloto}" class="logo-numero">
-                    <img src="${equipe.logo}" class="logo-equipe">
                 </div>
             `;
             pilotoContainer.appendChild(pilotoDiv);
