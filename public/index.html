@@ -2,213 +2,302 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>F1TECH | Página Inicial</title>
+  <title>F1TECH | Página Inicial</title>
 
-    <script src="./js/sessao.js"></script>
+  <script src="./js/sessao.js"></script>
 
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <style>
-      /* Estilos para layout da história da Fórmula 1 */
+  <link rel="stylesheet" href="./css/estilo.css">
+  <link rel="icon" href="./assets/icon/favicon2.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <style>
+    /* Estilos para layout da história da Fórmula 1 */
 
-      .section {
-    background-color: #f9f9f9;
-}
+    .section {
+      background-color: #f9f9f9;
+    }
 
-.section .container {
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
+    .section .container {
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      border-top: solid 10px #e10600;
+    }
 
-.section .content, .historia {
-    max-width: 70%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
+    .impar {
+      border-right: solid 10px #e10600;
+      border-top-right-radius: 25px;
+      border-bottom-right-radius: 25px;
+    }
 
-.section .content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-}
+    .par {
+      border-left: solid 10px #e10600;
+      border-top-left-radius: 25px;
+      border-bottom-left-radius: 25px;
+    }
 
-.section .info {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
+    .section .content,
+    .historia {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
 
-.section .info h2 {
-    color: #333;
-    font-size: 50px;
-    margin-bottom: 10px;
-}
+    .section .content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+    }
 
-.section .info p {
-    color: #666;
-    font-size: 20px;
-    line-height: 1.6;
-    margin-bottom: 10px;
-}
+    .section .info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
 
-.img-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 20px;
-}
+    .section .info h2 {
+      color: #333;
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
 
-.images {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-top: 10px;
-}
+    .section .info p {
+      color: #666;
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
 
-.img-piloto {
-    width: 300px;
-    margin-bottom: 10px;
-}
+    .section .info a {
+      text-decoration: none;
+    }
 
-.logo-numero, .logo-equipe {
-    max-width: 80px;
-}
+    .img-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 20px;
+    }
 
-.section .historia {
-    color: #666;
-    font-size: 20px;
-    line-height: 1.6;
-    margin-top: -60px;
-    width: 100%;
-}
-    </style>
+    .images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      margin-top: 10px;
+    }
+
+    .img-piloto {
+      width: 300px;
+      margin-bottom: 10px;
+      margin-top: 40px;
+
+    }
+
+    .logo-equipe {
+      max-width: 80px;
+    }
+
+    .logo-numero {
+      max-width: 100px;
+    }
+
+    .section .historia {
+      color: #666;
+      font-size: 20px;
+      line-height: 1.6;
+      margin-top: -95px;
+      width: 100%;
+    }
+
+    .section.equipe {
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+    .section.equipe .container {
+      max-width: 70%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .section.equipe h2 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .section.equipe .logo-equipe {
+      max-width: 100px;
+      margin-bottom: 10px;
+    }
+
+    .section.equipe .pilotos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .section.equipe .pilotos .piloto {
+      text-align: center;
+    }
+
+    .section.equipe .pilotos p {
+      font-size: 25px;
+      color: black;
+      font-weight: 700;
+    }
+
+    .section.equipe .pilotos a {
+      text-decoration: none !important;
+    }
+
+    .section.equipe .img-piloto {
+      width: 200px;
+      margin-top: 10px;
+    }
+
+    .section.equipe .carro {
+      margin-top: 20px;
+    }
+
+    .section.equipe .carro img {
+      max-width: 1000px;
+    }
+
+    .section.equipe .historia {
+      display: none;
+      margin-top: 20px;
+      margin-left: 10px;
+      max-width: 80%;
+    }
+
+    .section.equipe .historia p {
+      font-size: 18px;
+    }
+
+    .section.equipe .mostrar-historia {
+      cursor: pointer;
+      color: #000000;
+      margin-top: 10px;
+      font-size: 30px;
+      font-weight: 700;
+      display: contents;
+      align-items: center;
+    }
+
+    .section.equipe .mostrar-historia:hover {
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="header">
-      <div class="container">
-        <img src="./assets/imgs/logo.png">
-        <ul class="navbar">
-          <li class="agora">
-            <a href="#">Inicial</a>
-          </li>
-          <li>
-            <a href="ranking.html">Ranking</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-      </div>
+  <div class="header">
+    <div class="container">
+      <img src="./assets/imgs/logo.png">
+      <ul class="navbar">
+        <li class="agora">
+          <a href="#">Inicial</a>
+        </li>
+        <li>
+          <a href="ranking.html">Ranking</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+        <li>
+          <a href="cadastro.html">Cadastro</a>
+        </li>
+      </ul>
     </div>
-  
-    <div class="banner">
-      <div class="container">
-        <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
-        <a href="#history" class="button">Conheça mais sobre a história da Fórmula 1</a>
-      </div>
-    </div>
-    
-    <div id="piloto-template" class="section piloto">
-
-    <!-- Conteúdo será preenchido via JavaScript -->
-      <!-- <div class="container">
-          <div class="content">
-              <h2>Nome do Piloto</h2>
-              <p><strong>Data de nascimento:</strong> XX/xx/xx </p>
-              <p><strong>Numero:</strong> 38</p>
-              <p><strong>Equipe Atual:</strong> Ferrari </p>
-              <p><strong>Títulos:</strong> 0</p>
-              <p><strong>História:</strong></p>
-              <p>Born in the Mediterranean idyll of Monaco, Leclerc arrived in F1 on a tidal wave of expectation.
-
-                Practically peerless on his way to the GP3 and Formula 2 crowns, he showcased a dazzling array of skills from scorching pole positions, commanding victories – even when his car caught fire twice at Silverstone – to an ability to muscle his way through the pack. Winning back-to-back championships also taught Leclerc how to handle pressure, another useful tool in the big pond of Formula 1 racing.
-                
-                Stepping up to F1 in 2018, Leclerc showed flashes of ballistic pace on Saturdays and racing brilliance on Sundays, dragging his Sauber beyond its limits – and earning himself a money-can’t-buy race seat at Ferrari for 2019, stepping into the shoes of the Scuderia’s last world champion, Kimi Raikkonen.</p>
-          </div>
-          <div class="images">
-              <img src="https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.png" class="img-piloto">
-              <img src="https://media.formula1.com/d_default_fallback_image.png/content/dam/fom-website/2018-redesign-assets/drivers/number-logos/CHALEC01.png" class="logo-numero">
-              <img src="https://media.formula1.com/content/dam/fom-website/teams/2024/ferrari-logo.png" class="logo-equipe">
-          </div>
-      </div> -->
   </div>
 
-
-    <div class="footer">
-      <div class="container">
-        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-        <span class="version">v1.0.0</span>
-      </div>
+  <div class="banner">
+    <div class="container">
+      <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
+      <a href="#history" class="button">Conheça mais sobre a história da Fórmula 1</a>
     </div>
-  </body>
+  </div>
+
+  <div id="equipe-template" class="section equipe">
+  </div>
+
+  <div id="piloto-template" class="section piloto">
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <h4>Feito por Arthur Ramos &hearts; SPTech &copy; 2024</h4>
+      <span class="version">v1.0.0</span>
+    </div>
+  </div>
+
+</body>
 
 </html>
 
 <script>
   document.addEventListener("DOMContentLoaded", async function () {
-      try {
-          // Chama as funções de listagem de pilotos e equipes e espera que ambas sejam concluídas
-          await Promise.all([listarPilotos(), listarEquipes()]);
-  
-          // Após ambas as listas estarem preenchidas, preenche o template
-          preencherTemplate();
-      } catch (error) {
-          console.error("Erro ao carregar dados:", error);
-      }
+    try {
+      // Chama as funções de listagem de pilotos e equipes e espera que ambas sejam concluídas
+      await Promise.all([listarPilotos(), listarEquipes()]);
+
+      // Após ambas as listas estarem preenchidas, preenche o template
+      preencherTemplate();
+      preencherEquipes();
+    } catch (error) {
+      console.error("Erro ao carregar dados:", error);
+    }
   })
-  
+
   let equipesData = {};
-  
+
   function listarEquipes() {
-      return fetch("/equipe/listarEquipe", {
-          method: "GET",
-      })
+    return fetch("/equipe/listarEquipe", {
+      method: "GET",
+    })
       .then(function (resposta) {
-          return resposta.json();
+        return resposta.json();
       })
       .then((equipes) => {
-          equipes.forEach((equipe) => {
-              // Armazenar as informações das equipes em um objeto usando o ID da equipe como chave
-              equipesData[equipe.idEquipe] = equipe;
-          });
+        equipes.forEach((equipe) => {
+          // Armazenar as informações das equipes em um objeto usando o ID da equipe como chave
+          equipesData[equipe.idEquipe] = equipe;
+        });
       })
       .catch(function (erro) {
-          console.error(`#ERRO: ${erro}`);
+        console.error(`#ERRO: ${erro}`);
       });
   }
-  
+
   let pilotosData = [];
-  
+
   function listarPilotos() {
-      return fetch('/piloto/listarPiloto', {
-          method: 'GET',
-      })
+    return fetch('/piloto/listarPiloto', {
+      method: 'GET',
+    })
       .then(function (resposta) {
-          return resposta.json();
+        return resposta.json();
       })
       .then((pilotos) => {
-          pilotosData = pilotos;
+        pilotosData = pilotos;
       })
       .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
+        console.log(`#ERRO: ${resposta}`);
       });
   }
 
@@ -219,32 +308,32 @@
     const mes = (dataObj.getMonth() + 1).toString().padStart(2, '0');
     const ano = dataObj.getFullYear().toString();
     return `${dia}/${mes}/${ano}`;
-}
-  
-function preencherTemplate() {
+  }
+
+  function preencherTemplate() {
     const pilotoContainer = document.getElementById('piloto-template');
     pilotoContainer.innerHTML = ''; // Limpa o conteúdo do template
 
     pilotosData.forEach((piloto) => {
-        // Verificar se o piloto tem uma equipe atribuída (fkEquipe)
-        if (piloto.fkEquipe) {
-            const equipe = equipesData[piloto.fkEquipe]; // Recupera os dados da equipe correspondente
-            const pilotoDiv = document.createElement('div');
-            pilotoDiv.classList.add('container');
-            pilotoDiv.innerHTML = `
-            <div class="content">
+      // Verificar se o piloto tem uma equipe atribuída (fkEquipe)
+      if (piloto.fkEquipe) {
+        const equipe = equipesData[piloto.fkEquipe]; // Recupera os dados da equipe correspondente
+        const pilotoDiv = document.createElement('div');
+        pilotoDiv.classList.add('container');
+        pilotoDiv.innerHTML = `
+            <div class="content" id="${piloto.idPiloto}.piloto">
                     <div class="info">
                         <h2>${piloto.nome}</h2>
                         <p><strong>Data de nascimento:</strong> ${formatarData(piloto.dataNasc)}</p>
                         <p><strong>Numero:</strong> ${piloto.NumPiloto}</p>
-                        <p><strong>Equipe Atual:</strong> ${equipe.nome}</p>
+                        <a href="#${equipe.idEquipe}.equipe"><p><strong>Equipe Atual:</strong> ${equipe.nome}</p></a>
                         <p><strong>Títulos:</strong> ${piloto.titulos || 0}</p>
                     </div>
                     <div class="img-container">
                         <img src="${piloto.imgPiloto}" class="img-piloto">
                         <div class="images">
                             <img src="${piloto.imgNumPiloto}" class="logo-numero">
-                            <img src="${equipe.logo}" class="logo-equipe">
+                            <a href="#${equipe.idEquipe}.equipe"><img src="${equipe.logo}" class="logo-equipe"></a>
                         </div>
                     </div>
                 </div>
@@ -253,8 +342,61 @@ function preencherTemplate() {
                     <p>${piloto.historia}</p>
                 </div>
             `;
-            pilotoContainer.appendChild(pilotoDiv);
-        }
+        pilotoContainer.appendChild(pilotoDiv);
+      }
     });
-}
-  </script>
+  }
+
+  function preencherEquipes() {
+    const equipeContainer = document.getElementById('equipe-template');
+    equipeContainer.innerHTML = ''; // Limpa o conteúdo do template
+
+    Object.values(equipesData).forEach((equipe) => {
+      const pilotosDaEquipe = pilotosData.filter(piloto => piloto.fkEquipe === equipe.idEquipe);
+      const equipeDiv = document.createElement('div');
+      equipeDiv.classList.add('container');
+      equipeDiv.classList.add(equipe.idEquipe % 2 === 0 ? 'par' : 'impar');
+      equipeDiv.innerHTML = `
+        <h2 id="${equipe.idEquipe}.equipe" class="section equipe">${equipe.nome}</h2>
+        <img src="${equipe.logo}" class="logo-equipe">
+        <div class="pilotos">
+          ${pilotosDaEquipe.map(piloto => `
+            <a href="#${piloto.idPiloto}.piloto">
+              <div class="piloto">
+                <p>${piloto.nome}</p>
+                <img src="${piloto.imgPiloto}" class="img-piloto">
+              </div>
+            </a>
+          `).join('')}
+        </div>  
+        <div class="carro">
+          <img src="${equipe.imgCarro}">
+        </div>
+        <div class="mostrar-historia">
+          <p>Conheça mais sobre a história da ${equipe.nome}</p>
+          <img src="./assets/imgs/setaBaixo.png">
+        </div>
+        <div class="historia equipe" style="display: none;">
+          <p><strong>História da Equipe:</strong></p>
+          <p>${equipe.historia}</p>
+        </div>
+
+      `;
+      equipeContainer.appendChild(equipeDiv);
+
+      const mostrarHistoriaBtn = equipeDiv.querySelector('.mostrar-historia');
+      const historiaEquipe = equipeDiv.querySelector('.historia');
+      const setaImg = mostrarHistoriaBtn.querySelector('img');
+
+      mostrarHistoriaBtn.addEventListener('click', () => {
+        if (historiaEquipe.style.display === 'none') {
+          historiaEquipe.style.display = 'block';
+          setaImg.src = './assets/imgs/setaCima.png';
+        } else {
+          historiaEquipe.style.display = 'none';
+          setaImg.src = './assets/imgs/setaBaixo.png';
+        }
+      });
+    });
+  }
+</script>
