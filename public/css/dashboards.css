@@ -58,7 +58,7 @@ body {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color: #e6005a;
+  background-color: #cd3532;
   width: 120px;
 }
 
@@ -71,7 +71,7 @@ body {
   font-size: 14px;
   padding: 5px 8px;
   color: white;
-  background-color: #e6005a;
+  background-color: #cd3532;
   width: 80px;
 }
 
@@ -82,7 +82,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  border-bottom: 3px solid #e6005a;
+  border-bottom: 3px solid #cd3532;
   padding: 20px;
 }
 
@@ -164,26 +164,6 @@ body {
 
 .item-regua p:nth-child(2) {
   font-weight: 800;
-}
-
-.perigo-frio {
-  background-color: #5c6bc0;
-}
-
-.perigo-quente {
-  background-color: #ff7043;
-}
-
-.alerta-frio {
-  background-color: #42a5f5;
-}
-
-.alerta-quente {
-  background-color: #ffee58;
-}
-
-.ideal {
-  background-color: #9ccc65;
 }
 
 .cards {
@@ -295,11 +275,11 @@ body {
 
 .btn-pink {
   color: white;
-  background-color: #e6005a;
+  background-color: #cd3532;
 }
 
 .btn-white {
-  color: #e6005a;
+  color: #cd3532;
   background-color: white;
 
 }
@@ -348,7 +328,7 @@ canvas {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 3px solid #32b9cd;
+  border-right: 3px solid #cd3532;
   background-color: #212124;
 }
 
@@ -365,29 +345,53 @@ canvas {
 }
 
 .header-left h1 {
-  color: #32b9cd;
+  color: #e10600;
 }
 
 .hello {
   width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hello img.profile {
+  width: 100px; 
+  height: 100px;
+  border-radius: 50%; 
+  object-fit: cover; 
+}
+
+.hello .info {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.hello .info img {
+  max-width: 100px;
+  height: auto;
+  border-radius: 0; /* Remove o arredondamento para as logos */
 }
 
 .hello h3 {
   color: #e3b062;
   font-weight: 300;
   font-size: 1.2rem;
+  margin: 10px 0;
+  display: ruby;
 }
 
-.hello h3 span {
+.hello h3 p {
   font-weight: 800;
 }
 
 .btn-nav {
   width: 40%;
   color: white;
-  background-color: #e6005a;
+  background-color: #cd3532;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
@@ -396,7 +400,7 @@ canvas {
 .btn-nav-white {
   width: 40%;
   background-color: white;
-  border: 3px solid #e6005a;
+  border: 3px solid #cd3532;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
@@ -418,7 +422,7 @@ canvas {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #32b9cd;
+  background-color: #cd3532;
   color: white;
   border-radius: 10px;
   text-align: center;

@@ -13,20 +13,19 @@
     <link rel="stylesheet" href="./../css/estilo.css" />
 
     <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body onload="validarSessao()">
 
     <div class="janela">
 
         <div class="header-left dash-header">
 
-            <h1>AquaTech</h1>
+            <h1>F1TECH</h1>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -54,67 +53,68 @@
 
         </div>
 
-        <div class="dash">
-            <div id="alerta">
-            </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
-                </p>
-                <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
-                        <p>&lt;=5°C</p>
-                    </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
-                    </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
-                    </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cards" id="cardAquarios">
-
-            </div>
-
-        </div>
-
     </div>
 
 </body>
 
 <script>
+    window.onload = async function () {
+        validarSessao();
+        await carregarInfoUsuario();
+    };
 
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
-                    `
+    let dadosUsuario = {}; // Objeto para armazenar os dados do usuário
+
+    function obterDadosUsuario() {
+        return fetch(`/usuarios/listarInfo/${encodeURIComponent(sessionStorage.EMAIL_USUARIO)}`, {
+            method: 'GET',
+        })
+        .then(resposta => {
+            if (!resposta.ok) {
+                throw new Error('Erro ao obter dados do usuário');
+            }
+            return resposta.json();
+        })
+        .catch(erro => {
+            console.error(`Erro ao obter dados do usuário: ${erro}`);
+            throw erro; // Propagar o erro para o ponto de chamada
         });
     }
 
+    async function carregarInfoUsuario() {
+        const email = sessionStorage.EMAIL_USUARIO;
+
+        try {
+            let dados = JSON.parse(sessionStorage.getItem('dadosUsuario'));
+            console.log("Dados antes de verificar se estão vazios:", dados);
+
+            if (!dados) {
+                dados = await obterDadosUsuario(email);
+                console.log("Dados obtidos do usuário:", dados);
+                sessionStorage.setItem('dadosUsuario', JSON.stringify(dados));
+                console.log("Dados armazenados na sessionStorage:", JSON.parse(sessionStorage.getItem('dadosUsuario')));
+            }
+
+            if (dados) {
+                preencherInformacoesUsuario(dados[0]);
+            } else {
+                console.error("Dados do usuário não encontrados.");
+            }
+        } catch (error) {
+            console.error("Erro ao carregar informações do usuário:", error);
+        }
+    }
+
+    function preencherInformacoesUsuario(dados) {
+        document.querySelector(".hello").innerHTML = `
+        <img class="profile" src="${dados.imgPerfil}" alt="Perfil" />
+        <h3>Olá, <p>${dados.nome}</p>!</h3>
+        <div class="info">
+            <img src="${dados.logoEquipe}" alt="Logo da Equipe" />
+            <img src="${dados.imgNumPiloto}" alt="Número do Piloto" />
+        </div>
+        `;
+    }
 </script>
 
 </html>
