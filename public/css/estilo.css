@@ -63,7 +63,7 @@ body {
 /* BANNER */
 
 .banner {
-  height: var(--tamanho-banner);
+  height: 90vh;
   color: white;
   background-image: url('../assets/imgs/bgIMG.jpg');
   background-size: cover;
@@ -82,11 +82,12 @@ text-shadow: 0px 0px 15px black;
   width: 50%;
   margin: 0;
   padding: 0;
-  font-size: 36px;
+  font-size: 40px;
 }
 
 .banner .container span {
-  font-weight: 800;
+  font-weight: 900;
+  font-size: 45px;
 }
 
 /* MISSÃO VISÃO VALORES */
@@ -389,7 +390,7 @@ input {
 }
 
 .section {
-  background-color: #f9f9f9;
+  background-color: #f5f5f5;
 }
 
 .section .container {
@@ -492,7 +493,7 @@ input {
 }
 
 .section.equipe {
-  background-color: #f0f0f0;
+  background-color: #f5f5f5;
   padding: 20px;
 }
 
@@ -572,4 +573,74 @@ input {
 
 .section.equipe .mostrar-historia:hover {
   text-decoration: none;
+}
+
+.history {
+  padding: 50px 0;
+  background-color: #f5f5f5;
+}
+
+.history .container {
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-top: solid 10px #e10600;
+}
+
+.history h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+}
+
+.history .content {
+  display: flex;
+  align-items: center;
+}
+
+.history .text {
+  flex: 1;
+  padding: 15px;
+}
+
+.history .image {
+  flex: 1;
+  padding: 15px;
+}
+
+.history .image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .history .content {
+    flex-direction: column;
+  }
+}
+
+.buttonIndex {
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 800;
+  border-radius: 8px;
+  padding: 14px 24px;
+  border: none;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+  background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(225, 71, 47) 50%, rgb(215, 39, 4) 100%);
+  color: #fff;
+}
+
+.entre-secoes {
+  text-align: center;
+  padding: 50px 0;
+  background-color: #f5f5f5;
 }
