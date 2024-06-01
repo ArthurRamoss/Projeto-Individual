@@ -153,6 +153,7 @@ text-shadow: 0px 0px 15px black;
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding-top: 35px;
 }
 
 .card {
@@ -182,8 +183,8 @@ text-shadow: 0px 0px 15px black;
 }
 
 .formulario span {
-  font-size: 15px;
-  font-weight: 800;
+  font-size: 22px !important; 
+  font-weight: 800 !important;
 }
 
 .formulario input {
