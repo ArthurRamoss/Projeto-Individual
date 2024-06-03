@@ -73,17 +73,332 @@
                 </div>
                 <div class="finalizacao" id="finalizacao"></div>
                 <div class="resposta" id="resposta"></div>
-                <button class="iniciar finalizar" id="finalizar" style="display: none;" onclick="finish()">Finalizar Quiz</button>
+                <button class="iniciar finalizar" id="finalizar" style="display: none;" onclick="finish()">Finalizar
+                    Quiz</button>
             </div>
 
         </div>
-        
+
 </body>
 <script>
 
     var perguntasQuiz = [
         [
-           
+            {
+                "perguntas": "Quantos títulos de Fórmula 1 Charles Leclerc possui até agora?",
+                "opcoes": ["Nenhum", "Um", "Dois", "Três"],
+                "resposta": 0
+            },
+            {
+                "perguntas": "Qual equipe Charles Leclerc representa na Fórmula 1?",
+                "opcoes": ["Mercedes", "Red Bull Racing", "Ferrari", "McLaren"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual foi uma das características marcantes de Charles Leclerc em sua jornada na Fórmula 1?",
+                "opcoes": ["Habilidade de lidar com pressão", "Tendência a evitar duelos", "Desempenho inconsistente", "Foco exclusivo em velocidade"],
+                "resposta": 0
+            },
+            {
+                "perguntas": "Em que ano Carlos Sainz estreou na Fórmula 1?",
+                "opcoes": ["2013", "2015", "2017", "2019"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual equipe Carlos Sainz representou antes de se juntar à Ferrari?",
+                "opcoes": ["Red Bull Racing", "McLaren", "Mercedes", "Williams"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual foi a melhor posição de Carlos Sainz em um campeonato mundial de Fórmula 1 até agora?",
+                "opcoes": ["6º lugar", "4º lugar", "3º lugar", "2º lugar"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual é o número de Max Verstappen na Fórmula 1 atualmente?",
+                "opcoes": ["5", "1", "3", "7"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Quantos títulos mundiais Max Verstappen conquistou até agora?",
+                "opcoes": ["1", "3", "2", "4"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual é a equipe atual de Max Verstappen na Fórmula 1?",
+                "opcoes": ["Ferrari", "Mercedes", "Red Bull Racing", "McLaren"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual é o número de Sergio Perez na Fórmula 1 atualmente?",
+                "opcoes": ["10", "9", "77", "11"],
+                "resposta": 3
+            },
+            {
+                "perguntas": "Quantos títulos mundiais Sergio Perez conquistou até agora?",
+                "opcoes": ["1", "2", "0", "3"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual é a equipe atual de Sergio Perez na Fórmula 1?",
+                "opcoes": ["McLaren", "Racing Point", "Red Bull Racing", "Williams"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual é o número que Lando Norris utiliza em sua equipe na Fórmula 1?",
+                "opcoes": ["7", "44", "4", "23"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Quantos títulos mundiais de Fórmula 1 Lando Norris possui até o momento?",
+                "opcoes": ["1", "0", "2", "3"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Quem foi o companheiro de equipe de Lando Norris em sua temporada de estreia na Fórmula 1?",
+                "opcoes": ["Lewis Hamilton", "Daniel Ricciardo", "Sebastian Vettel", "Carlos Sainz"],
+                "resposta": 3
+            },
+            {
+                "perguntas": "Qual foi a melhor posição de Oscar Piastri em um campeonato mundial de Fórmula 1 até agora?",
+                "opcoes": ["8º lugar", "10º lugar", "6º lugar", "4º lugar"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual é o número atual de Oscar Piastri na Fórmula 1?",
+                "opcoes": ["78", "81", "85", "92"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual equipe atual Oscar Piastri representa na Fórmula 1?",
+                "opcoes": ["Red Bull Racing", "Ferrari", "Alpine", "McLaren"],
+                "resposta": 3
+            },
+            {
+                "perguntas": "Qual é o número atual de Lewis Hamilton na Fórmula 1?",
+                "opcoes": ["5", "23", "44", "77"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Quantos títulos mundiais Lewis Hamilton conquistou até agora na Fórmula 1?",
+                "opcoes": ["5", "7", "10", "12"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual equipe Lewis Hamilton representa atualmente na Fórmula 1?",
+                "opcoes": ["Red Bull Racing", "Ferrari", "Alpine", "Mercedes"],
+                "resposta": 3
+            },
+            {
+                "perguntas": "Em qual corrida George Russell quase garantiu a vitória ao substituir Lewis Hamilton de última hora em 2022?",
+                "opcoes": ["GP da Austrália", "GP do Bahrein", "GP da China", "GP de Mônaco"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual foi o resultado mais notável de George Russell durante sua temporada de estreia na Fórmula 1?",
+                "opcoes": ["Pole Position", "Vitória", "Pódio", "Volta mais rápida"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Além da Fórmula 1, em que outras categorias George Russell conquistou triunfos antes de chegar à principal categoria do automobilismo?",
+                "opcoes": ["GP3 e Fórmula 2", "IndyCar e WEC", "NASCAR e MotoGP", "Rally e Formula E"],
+                "resposta": 0
+            },
+            {
+                "perguntas": "Quantos títulos mundiais Fernando Alonso conquistou até agora na Fórmula 1?",
+                "opcoes": ["1", "2", "3", "4"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual equipe Fernando Alonso representa atualmente na Fórmula 1?",
+                "opcoes": ["Red Bull Racing", "Ferrari", "Alpine", "Aston Martin"],
+                "resposta": 3
+            },
+            {
+                "perguntas": "Qual é o número atual de Fernando Alonso na Fórmula 1?",
+                "opcoes": ["7", "12", "14", "21"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual foi o resultado mais notável de Lance Stroll durante sua temporada de estreia na Fórmula 1?",
+                "opcoes": ["Vitória", "Pole Position", "Pódio", "Volta mais rápida"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Em qual equipe Lance Stroll começou sua carreira na Fórmula 1?",
+                "opcoes": ["Red Bull Racing", "Williams", "Ferrari", "Alpine"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual foi o circuito onde Lance Stroll se tornou o mais jovem estreante a conquistar um pódio na história da Fórmula 1?",
+                "opcoes": ["Spa-Francorchamps", "Baku", "Monza", "Silverstone"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual foi a posição final de Yuki Tsunoda em seu campeonato de estreia na Fórmula 2?",
+                "opcoes": ["1º lugar", "2º lugar", "3º lugar", "4º lugar"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual foi o resultado mais marcante de Yuki Tsunoda durante sua temporada de estreia na Fórmula 1?",
+                "opcoes": ["Vitória", "Pole Position", "Pódio", "Volta mais rápida"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual é a nacionalidade de Yuki Tsunoda?",
+                "opcoes": ["Chinês", "Japonês", "Coreano", "Tailandês"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual é o apelido de Daniel Ricciardo?",
+                "opcoes": ["The Shark", "The Lion", "The Honey Badger", "The Eagle"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual equipe Daniel Ricciardo representou após sua passagem pela Red Bull Racing?",
+                "opcoes": ["Ferrari", "Mercedes", "Renault", "AlphaTauri"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual é o número de Daniel Ricciardo na Fórmula 1?",
+                "opcoes": ["1", "3", "7", "10"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual corrida marcou a estreia de Nico Hülkenberg na Fórmula 1?",
+                "opcoes": ["GP da Bélgica", "GP da Austrália", "GP do Brasil", "GP de Mônaco"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Além da Fórmula 1, em que outra competição Nico Hülkenberg venceu em sua primeira tentativa?",
+                "opcoes": ["24 Horas de Le Mans", "24 Horas de Daytona", "24 Horas de Nürburgring", "24 Horas de Spa-Francorchamps"],
+                "resposta": 0
+            },
+            {
+                "perguntas": "Qual é o apelido de Nico Hülkenberg na Fórmula 1?",
+                "opcoes": ["The Panther", "The Tiger", "The Hulk", "The Lion"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Em que ano Kevin Magnussen conquistou seu primeiro pódio na Fórmula 1?",
+                "opcoes": ["2012", "2014", "2016", "2018"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual equipe deu a Kevin Magnussen sua estreia na Fórmula 1?",
+                "opcoes": ["McLaren", "Renault", "Haas", "Red Bull Racing"],
+                "resposta": 0
+            },
+            {
+                "perguntas": "Em qual país Kevin Magnussen conquistou sua primeira pole position na Fórmula 1?",
+                "opcoes": ["Estados Unidos", "Brasil", "Austrália", "Espanha"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual equipe Alexander Albon representava quando estreou na Fórmula 1 em 2019?",
+                "opcoes": ["Mercedes", "Toro Rosso", "Ferrari", "Williams"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Em que ano Alexander Albon teve sua primeira oportunidade como piloto de teste e reserva na Fórmula 1?",
+                "opcoes": ["2020", "2021", "2022", "2023"],
+                "resposta": 0
+            },
+            {
+                "perguntas": "Qual foi o título que Alexander Albon disputou em 2018 antes de estrear na Fórmula 1?",
+                "opcoes": ["GP2", "GP3", "Fórmula 3", "Fórmula 2"],
+                "resposta": 3
+            },
+            {
+                "perguntas": "Em que categoria Logan Sargeant teve sucesso antes de chegar à Fórmula 1?",
+                "opcoes": ["Fórmula E", "Fórmula 2", "Fórmula 3", "Fórmula 4"],
+                "resposta": 3
+            },
+            {
+                "perguntas": "Qual é a nacionalidade de Logan Sargeant?",
+                "opcoes": ["Britânica", "Alemã", "Americana", "Francesa"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Quantas vezes Logan Sargeant pontuou em sua temporada de estreia na Fórmula 1?",
+                "opcoes": ["Nenhuma vez", "Uma vez", "Duas vezes", "Três vezes"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Em que corrida Pierre Gasly conquistou sua emocionante vitória na Fórmula 1 em 2020?",
+                "opcoes": ["GP do Brasil", "GP da Itália", "GP de Mônaco", "GP da Alemanha"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Quantas equipes diferentes Pierre Gasly representou na Fórmula 1 até o momento?",
+                "opcoes": ["1", "2", "3", "4"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual foi o melhor resultado de Pierre Gasly enquanto pilotava pela Red Bull Racing?",
+                "opcoes": ["Vitória", "2º lugar", "3º lugar", "4º lugar"],
+                "resposta": 3
+            },
+            {
+                "perguntas": "Qual título Esteban Ocon conquistou em 2015 antes de chegar à Fórmula 1?",
+                "opcoes": ["Fórmula 1", "GP3", "Fórmula 2", "Fórmula 3"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Em qual equipe Esteban Ocon conquistou sua primeira vitória na Fórmula 1 em 2021?",
+                "opcoes": ["Renault", "Mercedes", "Manor", "Alpine"],
+                "resposta": 3
+            },
+            {
+                "perguntas": "Por quantos anos Esteban Ocon foi piloto reserva da Mercedes antes de retornar à grid da Fórmula 1 em 2020?",
+                "opcoes": ["1 ano", "2 anos", "3 anos", "4 anos"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual equipe Valtteri Bottas representava quando conquistou seu único campeonato de equipe na Fórmula 1?",
+                "opcoes": ["Williams", "Mercedes", "Kick Sauber", "Alfa Romeo"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Quantas temporadas Valtteri Bottas passou na equipe Mercedes antes de ser dispensado?",
+                "opcoes": ["1 temporada", "2 temporadas", "3 temporadas", "4 temporadas"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual foi o melhor resultado de Valtteri Bottas em um campeonato mundial de Fórmula 1 até agora?",
+                "opcoes": ["1º lugar", "2º lugar", "3º lugar", "4º lugar"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual foi o primeiro piloto chinês a competir na Fórmula 1?",
+                "opcoes": ["Zhou Guanyu", "Yuki Tsunoda", "Kimi Räikkönen", "Max Verstappen"],
+                "resposta": 0
+            },
+            {
+                "perguntas": "Em qual equipe Zhou Guanyu competiu em sua estreia na Fórmula 1?",
+                "opcoes": ["Alfa Romeo", "Williams", "Red Bull Racing", "Ferrari"],
+                "resposta": 0
+            },
+            {
+                "perguntas": "Quantas temporadas Zhou Guanyu competiu na Fórmula 2 antes de chegar à Fórmula 1?",
+                "opcoes": ["1 temporada", "2 temporadas", "3 temporadas", "4 temporadas"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Qual foi o evento inesperado que levou Oliver Bearman a fazer sua estreia na Fórmula 1?",
+                "opcoes": ["Lesão de um piloto", "Aposentadoria de um piloto", "Apendicite de um piloto", "Transferência de um piloto"],
+                "resposta": 2
+            },
+            {
+                "perguntas": "Além da Fórmula 1, em qual outra categoria de automobilismo Oliver Bearman competiu?",
+                "opcoes": ["Fórmula E", "Fórmula 2", "NASCAR", "IndyCar"],
+                "resposta": 1
+            },
+            {
+                "perguntas": "Qual foi o resultado impressionante que Oliver Bearman alcançou em sua primeira corrida na Fórmula 1?",
+                "opcoes": ["Vitória", "Pódio", "Pontuação", "Melhor volta"],
+                "resposta": 2
+            }
         ]
 
     ];
@@ -162,7 +477,7 @@
     }
 
     function analisar(opcaoEscolhida) {
-        var respostaCerta = perguntasSelecionadas[perguntaAtual].respostas;
+        var respostaCerta = perguntasSelecionadas[perguntaAtual].resposta;
         if (opcaoEscolhida == respostaCerta) {
             acertos++;
             resposta.innerHTML = ' <b style="color: green;">SUA RESPOSTA ESTÁ CORRETA</b>';
@@ -186,7 +501,7 @@
         }, 1000);
     }
 
-    function finish(){
+    function finish() {
         window.location = "./menu.html";
     }
 
@@ -208,8 +523,8 @@
 
         finalizacao.innerHTML = `
         <p>VOCÊ ACERTOU <b>${acertos}</b> DE <b>${perguntasSelecionadas.length}</b> QUESTÕES</p>
-    <p>Número de Erros: <b>${erros}</b></p>
-    <p>Tempo Total: <b>${tempoFormatado}</b></p>`;
+        <p>Número de Erros: <b>${erros}</b></p>
+        <p>Tempo Total: <b>${tempoFormatado}</b></p>`;
 
         tentativa++
 

@@ -19,6 +19,7 @@ body {
   display: flex;
   width: 80%;
   margin: auto;
+  justify-content: center;
 }
 
 .header {
@@ -99,10 +100,6 @@ text-shadow: 0px 0px 15px black;
 
 .social .container {
   justify-content: center;
-}
-
-.box img {
-  width: 170px;
 }
 
 .social .container .boxes {

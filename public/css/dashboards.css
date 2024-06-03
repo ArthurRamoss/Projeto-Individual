@@ -465,6 +465,7 @@ canvas {
   margin-left: 265px;
   margin: auto;
   display: flex;
+  margin-bottom: 5px;
 }
 
 .iniciar:hover {
@@ -552,9 +553,9 @@ canvas {
   padding: 10px;
   margin-bottom: 20px;
   width: 350px;
-  display: flex; /* Adiciona um display flex para alinhar os itens na horizontal */
-  flex-direction: column; /* Altera a direção do flex para coluna */
-  align-items: center; /* Centraliza os itens horizontalmente */
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
 }
 
 .dash-right .resultado-quiz {
@@ -564,25 +565,26 @@ canvas {
   padding: 10px;
   margin-bottom: 20px;
   width: 350px;
-  display: flex; /* Adiciona um display flex para alinhar os itens na horizontal */
-  flex-direction: column; /* Altera a direção do flex para coluna */
-  align-items: center; /* Centraliza os itens horizontalmente */
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
   margin: auto;
 }
 
 .resultado-tentativas {
-  width: 100%; /* Define a largura para ocupar toda a largura disponível */
-  display: flex; /* Adiciona um display flex para alinhar os itens na horizontal */
-  align-items: center; /* Centraliza os itens horizontalmente */
-  margin-top: 10px; /* Adiciona um espaçamento no topo */
+  width: 100%; 
+  display: flex; 
+  align-items: center; 
+  margin-top: 10px; 
+  margin-bottom: 20px;
 }
 
 .resultado-tentativas .tentativa {
-  width: 100%; /* Define a largura para ocupar toda a largura disponível */
-  border: 1px solid #ccc; /* Adiciona uma borda para separar as tentativas */
-  border-radius: 5px; /* Adiciona bordas arredondadas */
-  padding: 10px; /* Adiciona um espaçamento interno */
-  margin-top: 10px; /* Adiciona um espaçamento no topo */
+  width: 100%; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  padding: 10px; 
+  margin-top: 10px; 
 }
 
 .tentativa span {

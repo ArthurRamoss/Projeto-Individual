@@ -81,6 +81,10 @@
                         <p>Tempo: <span class="tempo">xx:xx:xx:xxx</span> </p>
                     </div>
                 </div>
+
+                <button class="iniciar" onclick="window.location.href = './QuizHistoria.html'">Testar
+                    Conhecimentos!</button>
+
             </div>
             <div class="resultado-quiz" data-tipoquiz="Equipes">
                 <h2>Quiz sobre as Equipes</h2>
@@ -104,6 +108,10 @@
                         <p>Tempo: <span class="tempo">xx:xx:xx:xxx</span> </p>
                     </div>
                 </div>
+
+                <button class="iniciar" onclick="window.location.href = './QuizEquipes.html'">Testar
+                    Conhecimentos!</button>
+
             </div>
             <div class="resultado-quiz" data-tipoquiz="Pilotos">
                 <h2>Quiz sobre os Pilotos</h2>
@@ -127,6 +135,10 @@
                         <p>Tempo: <span class="tempo">xx:xx:xx:xxx</span> </p>
                     </div>
                 </div>
+
+                <button class="iniciar" onclick="window.location.href = './QuizPilotos.html'">Testar
+                    Conhecimentos!</button>
+
             </div>
         </div>
 
@@ -139,53 +151,53 @@
 
     ///////////////////////////////////
     window.onload = async function () {
-    await carregarInfoUsuario();
-    
-    const tipoQuizzes = ['História da F1', 'Equipes', 'Pilotos'];
+        await carregarInfoUsuario();
 
-    tipoQuizzes.forEach(tipoQuiz => {
-        obterTentativas(idUsuario, tipoQuiz)
-            .then(tentativas => exibirResultados(tipoQuiz, tentativas))
-            .catch(error => console.error('Erro ao obter ou exibir tentativas:', error));
-    });
-};
+        const tipoQuizzes = ['História da F1', 'Equipes', 'Pilotos'];
 
-function obterTentativas(idUsuario, tipoQuiz) {
-    return fetch(`/quiz/listarTentativas/${idUsuario}/${tipoQuiz}`)
-        .then(resposta => resposta.json())
-        .catch(error => {
-            console.error('Erro ao obter tentativas:', error);
+        tipoQuizzes.forEach(tipoQuiz => {
+            obterTentativas(idUsuario, tipoQuiz)
+                .then(tentativas => exibirResultados(tipoQuiz, tentativas))
+                .catch(error => console.error('Erro ao obter ou exibir tentativas:', error));
         });
-}
+    };
 
-function exibirResultados(tipoQuiz, tentativas) {
-    const divResultadoQuiz = document.querySelector(`.resultado-quiz[data-tipoquiz="${tipoQuiz}"]`);
-    const divResultadoTentativas = divResultadoQuiz.querySelector('.resultado-tentativas');
-    
-    // Se houver tentativas disponíveis, vamos preenchê-las
-    if (tentativas.length > 0) {
-        divResultadoTentativas.innerHTML = '';
-        
-        tentativas.forEach(tentativa => {
-            const divTentativa = document.createElement('div');
-            divTentativa.classList.add('tentativa');
+    function obterTentativas(idUsuario, tipoQuiz) {
+        return fetch(`/quiz/listarTentativas/${idUsuario}/${tipoQuiz}`)
+            .then(resposta => resposta.json())
+            .catch(error => {
+                console.error('Erro ao obter tentativas:', error);
+            });
+    }
 
-            divTentativa.innerHTML = `
+    function exibirResultados(tipoQuiz, tentativas) {
+        const divResultadoQuiz = document.querySelector(`.resultado-quiz[data-tipoquiz="${tipoQuiz}"]`);
+        const divResultadoTentativas = divResultadoQuiz.querySelector('.resultado-tentativas');
+
+        // Se houver tentativas disponíveis, vamos preenchê-las
+        if (tentativas.length > 0) {
+            divResultadoTentativas.innerHTML = '';
+
+            tentativas.forEach(tentativa => {
+                const divTentativa = document.createElement('div');
+                divTentativa.classList.add('tentativa');
+
+                divTentativa.innerHTML = `
                 <h3>Tentativa ${tentativa.tentativa}</h3>
                 <p>Acertos: <span class="acertos">${tentativa.acertos || '00'}</span></p>
                 <p>Erros: <span class="erros">${tentativa.erros || '00'}</span></p>
                 <p>Tempo: <span class="tempo">${tentativa.tempo || 'xx'}</span></p>
             `;
 
-            divResultadoTentativas.appendChild(divTentativa);
-        });
+                divResultadoTentativas.appendChild(divTentativa);
+            });
+        }
+        // Caso não haja tentativas, vamos manter as divs como estão
     }
-    // Caso não haja tentativas, vamos manter as divs como estão
-}
 
-////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
 
-    let dadosUsuario = {}; 
+    let dadosUsuario = {};
 
     function obterDadosUsuario() {
         return fetch(`/usuarios/listarInfo/${encodeURIComponent(sessionStorage.EMAIL_USUARIO)}`, {

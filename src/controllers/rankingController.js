@@ -11,6 +11,18 @@ function obterRanking(req, res) {
         });
 }
 
+function obterRankingPorTipo(req, res) {
+    rankingModel.obterRankingPorTipo()
+        .then(ranking => {
+            res.status(200).json(ranking);
+        })
+        .catch(error => {
+            console.error("Erro ao obter ranking: ", error);
+            res.status(500).json({ message: "Erro ao obter ranking", error: error.message });
+        });
+}
+
 module.exports = {
-    obterRanking
+    obterRanking,
+    obterRankingPorTipo 
 };
