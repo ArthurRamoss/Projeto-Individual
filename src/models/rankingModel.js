@@ -1,3 +1,5 @@
+var database = require("../database/config")
+
 function obterRanking() {
     var instrucaoSql = `
         SELECT 
@@ -10,7 +12,7 @@ function obterRanking() {
             SUM(tentativa.erros) AS total_erros,
             MIN(tentativa.tempo) AS melhor_tempo
         FROM 
-            tentativa
+            quiz
         JOIN 
             usuario ON tentativa.idUsuario = usuario.idUsuario
         JOIN
@@ -45,3 +47,7 @@ function obterRanking() {
             throw error;
         });
 }
+
+module.exports = {
+    obterRanking,
+};

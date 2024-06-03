@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Tempo Real</title>
+    <title>F1TECH | Menu</title>
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
@@ -19,7 +19,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao()" style="background-color: #161618;">
 
     <div class="janela">
 
@@ -56,7 +56,78 @@
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
+        </div>
 
+        <div class="dash-right">
+            <div class="resultado-quiz" data-tipoquiz="História da F1">
+                <h2>Quiz sobre a História</h2>
+                <div class="resultado-tentativas">
+                    <div class="tentativa">
+                        <h3>Tentativa 1</h3>
+                        <p>Acertos: <span class="acertos">00</span></p>
+                        <p>Erros: <span class="erros">00</span></p>
+                        <p>Tempo: <span class="tempo">xx:xx:xx:xxx</span> </p>
+                    </div>
+                    <div class="tentativa">
+                        <h3>Tentativa 2</h3>
+                        <p>Acertos: <span class="acertos">00</span></p>
+                        <p>Erros: <span class="erros">00</span></p>
+                        <p>Tempo: <span class="tempo">xx:xx:xx:xxx</span> </p>
+                    </div>
+                    <div class="tentativa">
+                        <h3>Tentativa 3</h3>
+                        <p>Acertos: <span class="acertos">00</span></p>
+                        <p>Erros: <span class="erros">00</span></p>
+                        <p>Tempo: <span class="tempo">xx:xx:xx:xxx</span> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="resultado-quiz" data-tipoquiz="Equipes">
+                <h2>Quiz sobre as Equipes</h2>
+                <div class="resultado-tentativas">
+                    <div class="tentativa">
+                        <h3>Tentativa 1</h3>
+                        <p>Acertos: <span class="acertos">00</span></p>
+                        <p>Erros: <span class="erros">00</span></p>
+                        <p>Tempo: <span class="tempo">xx:xx:xx:xxx</span> </p>
+                    </div>
+                    <div class="tentativa">
+                        <h3>Tentativa 2</h3>
+                        <p>Acertos: <span class="acertos">00</span></p>
+                        <p>Erros: <span class="erros">00</span></p>
+                        <p>Tempo: <span class="tempo">xx:xx:xx:xxx</span> </p>
+                    </div>
+                    <div class="tentativa">
+                        <h3>Tentativa 3</h3>
+                        <p>Acertos: <span class="acertos">00</span></p>
+                        <p>Erros: <span class="erros">00</span></p>
+                        <p>Tempo: <span class="tempo">xx:xx:xx:xxx</span> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="resultado-quiz" data-tipoquiz="Pilotos">
+                <h2>Quiz sobre os Pilotos</h2>
+                <div class="resultado-tentativas">
+                    <div class="tentativa">
+                        <h3>Tentativa 1</h3>
+                        <p>Acertos: <span class="acertos">00</span></p>
+                        <p>Erros: <span class="erros">00</span></p>
+                        <p>Tempo: <span class="tempo">xx:xx:xx:xxx</span> </p>
+                    </div>
+                    <div class="tentativa">
+                        <h3>Tentativa 2</h3>
+                        <p>Acertos: <span class="acertos">00</span></p>
+                        <p>Erros: <span class="erros">00</span></p>
+                        <p>Tempo: <span class="tempo">xx:xx:xx:xxx</span> </p>
+                    </div>
+                    <div class="tentativa">
+                        <h3>Tentativa 3</h3>
+                        <p>Acertos: <span class="acertos">00</span></p>
+                        <p>Erros: <span class="erros">00</span></p>
+                        <p>Tempo: <span class="tempo">xx:xx:xx:xxx</span> </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -64,27 +135,72 @@
 </body>
 
 <script>
-    window.onload = async function () {
-        validarSessao();
-        await carregarInfoUsuario();
-    };
+    var idUsuario = 0
 
-    let dadosUsuario = {}; // Objeto para armazenar os dados do usuário
+    ///////////////////////////////////
+    window.onload = async function () {
+    await carregarInfoUsuario();
+    
+    const tipoQuizzes = ['História da F1', 'Equipes', 'Pilotos'];
+
+    tipoQuizzes.forEach(tipoQuiz => {
+        obterTentativas(idUsuario, tipoQuiz)
+            .then(tentativas => exibirResultados(tipoQuiz, tentativas))
+            .catch(error => console.error('Erro ao obter ou exibir tentativas:', error));
+    });
+};
+
+function obterTentativas(idUsuario, tipoQuiz) {
+    return fetch(`/quiz/listarTentativas/${idUsuario}/${tipoQuiz}`)
+        .then(resposta => resposta.json())
+        .catch(error => {
+            console.error('Erro ao obter tentativas:', error);
+        });
+}
+
+function exibirResultados(tipoQuiz, tentativas) {
+    const divResultadoQuiz = document.querySelector(`.resultado-quiz[data-tipoquiz="${tipoQuiz}"]`);
+    const divResultadoTentativas = divResultadoQuiz.querySelector('.resultado-tentativas');
+    
+    // Se houver tentativas disponíveis, vamos preenchê-las
+    if (tentativas.length > 0) {
+        divResultadoTentativas.innerHTML = '';
+        
+        tentativas.forEach(tentativa => {
+            const divTentativa = document.createElement('div');
+            divTentativa.classList.add('tentativa');
+
+            divTentativa.innerHTML = `
+                <h3>Tentativa ${tentativa.tentativa}</h3>
+                <p>Acertos: <span class="acertos">${tentativa.acertos || '00'}</span></p>
+                <p>Erros: <span class="erros">${tentativa.erros || '00'}</span></p>
+                <p>Tempo: <span class="tempo">${tentativa.tempo || 'xx'}</span></p>
+            `;
+
+            divResultadoTentativas.appendChild(divTentativa);
+        });
+    }
+    // Caso não haja tentativas, vamos manter as divs como estão
+}
+
+////////////////////////////////////////////////////////////////////////
+
+    let dadosUsuario = {}; 
 
     function obterDadosUsuario() {
         return fetch(`/usuarios/listarInfo/${encodeURIComponent(sessionStorage.EMAIL_USUARIO)}`, {
             method: 'GET',
         })
-        .then(resposta => {
-            if (!resposta.ok) {
-                throw new Error('Erro ao obter dados do usuário');
-            }
-            return resposta.json();
-        })
-        .catch(erro => {
-            console.error(`Erro ao obter dados do usuário: ${erro}`);
-            throw erro; // Propagar o erro para o ponto de chamada
-        });
+            .then(resposta => {
+                if (!resposta.ok) {
+                    throw new Error('Erro ao obter dados do usuário');
+                }
+                return resposta.json();
+            })
+            .catch(erro => {
+                console.error(`Erro ao obter dados do usuário: ${erro}`);
+                throw erro;
+            });
     }
 
     async function carregarInfoUsuario() {
@@ -112,6 +228,9 @@
     }
 
     function preencherInformacoesUsuario(dados) {
+
+        idUsuario = dados.idUsuario;
+
         document.querySelector(".hello").innerHTML = `
         <img class="profile" src="${dados.imgPerfil}" alt="Perfil" />
         <h3>Olá, <p>${dados.nome}</p>!</h3>

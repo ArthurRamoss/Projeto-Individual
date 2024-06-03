@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -6,21 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <title>F1TECH | Quiz da Historia</title>
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
-    <script src="./../js/alerta.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
 
     <!--FONT AWESOME-->
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao()" style="background-color: #161618;">
 
     <div class="janela">
         <div class="header-left">
@@ -36,7 +36,7 @@
                     <h3>Menu</h3>
                 </a>
             </div>
-            
+
             <div class="btn-nav">
                 <h3>Quiz sobre a historia</h3>
             </div>
@@ -52,11 +52,356 @@
                     <h3>Quiz sobre os pilotos</h3>
                 </a>
             </div>
+
+        </div>
+
+        <div class="dash-right">
+
+            <div id="quiz" class="quiz">
+                <div id="inicio">
+                    <h2> MOSTRE O SEU CONHECIMENTO SOBRE A HISTORIA DA F1</h2>
+                    <button id="iniciar" class="iniciar" onclick="iniciar()">Iniciar Quiz</button>
+                    <div class="pontuacao" id="pontuacao"></div>
+                </div>
+                <div class="mostrarQuiz">
+                    <div class="pergunta" id="pergunta"></div>
+                    <div id="opcoes" class="opcoes">
+                        <button id="opcao1" onclick="analisar(0)"></button>
+                        <button id="opcao2" onclick="analisar(1)"></button>
+                        <button id="opcao3" onclick="analisar(2)"></button>
+                        <button id="opcao4" onclick="analisar(3)"></button>
+                    </div>
+                </div>
+                <div class="finalizacao" id="finalizacao"></div>
+                <div class="resposta" id="resposta"></div>
+                <button class="iniciar finalizar" id="finalizar" style="display: none;" onclick="finish()">Finalizar Quiz</button>
+            </div>
+
+        </div>
+        
 </body>
-
-</html>
-
 <script>
+
+    var perguntasQuiz = [
+        [
+            {
+                "perguntas": "Quem venceu o primeiro campeonato de Fórmula 1 em 1950?",
+                "opcoes": ["Juan Manuel Fangio", "Alberto Ascari", "Giuseppe Farina", "Mike Hawthorn"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Quantos títulos Juan Manuel Fangio conquistou entre 1951 e 1957?",
+                "opcoes": ["3", "4", "5", "6"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Qual equipe destacou-se em 1952 e 1953 com Alberto Ascari?",
+                "opcoes": ["Mercedes-Benz", "Ferrari", "Lotus", "Vanwall"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Quem se tornou o primeiro campeão mundial britânico em 1958?",
+                "opcoes": ["Jackie Stewart", "Jim Clark", "Mike Hawthorn", "Stirling Moss"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Quando foi introduzido o Campeonato Mundial de Construtores?",
+                "opcoes": ["1956", "1957", "1958", "1959"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Quem se tornou o primeiro campeão mundial dos EUA em 1961?",
+                "opcoes": ["Dan Gurney", "Mario Andretti", "Phil Hill", "Richie Ginther"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Qual equipe revolucionou o design dos carros na década de 1960, liderada por Colin Chapman?",
+                "opcoes": ["Ferrari", "Lotus", "Brabham", "McLaren"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Em que ano os motores de 3 litros retornaram à Fórmula 1?",
+                "opcoes": ["1964", "1965", "1966", "1967"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Quem venceu o campeonato de 1966 com seu próprio carro?",
+                "opcoes": ["Bruce McLaren", "Jack Brabham", "Graham Hill", "Denny Hulme"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Em que ano as asas aerodinâmicas e publicidade foram introduzidas na Fórmula 1?",
+                "opcoes": ["1966", "1967", "1968", "1969"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Quem foi o único campeão póstumo da Fórmula 1 em 1970?",
+                "opcoes": ["Jochen Rindt", "Ronnie Peterson", "Gilles Villeneuve", "François Cevert"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Quantos campeonatos Emerson Fittipaldi venceu na década de 1970?",
+                "opcoes": ["1", "2", "3", "4"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Qual piloto venceu o campeonato em 1975 e 1977 após um grave acidente em 1976?",
+                "opcoes": ["James Hunt", "Niki Lauda", "Jody Scheckter", "Mario Andretti"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Qual inovação aerodinâmica a Lotus introduziu em 1978?",
+                "opcoes": ["Turbo", "Asa móvel", "Efeito solo", "Pneus slick"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Quem conquistou o campeonato de 1979 pela Ferrari?",
+                "opcoes": ["Gilles Villeneuve", "Carlos Reutemann", "Jody Scheckter", "Didier Pironi"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Qual piloto venceu os campeonatos de 1980 e 1981?",
+                "opcoes": ["Nelson Piquet", "Alan Jones", "Keke Rosberg", "Niki Lauda"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Quem venceu o campeonato de 1985?",
+                "opcoes": ["Nelson Piquet", "Alain Prost", "Ayrton Senna", "Nigel Mansell"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Qual piloto venceu o campeonato de 1988?",
+                "opcoes": ["Alain Prost", "Ayrton Senna", "Nigel Mansell", "Nelson Piquet"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Quem venceu o campeonato de 1989?",
+                "opcoes": ["Ayrton Senna", "Alain Prost", "Nelson Piquet", "Nigel Mansell"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Quantos títulos Ayrton Senna venceu na década de 1990?",
+                "opcoes": ["1", "2", "3", "4"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Quantos títulos Michael Schumacher venceu pela Benetton?",
+                "opcoes": ["1", "2", "3", "4"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Quem dominou os campeonatos de 1998 e 1999?",
+                "opcoes": ["Ferrari", "McLaren", "Williams", "Benetton"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Quem venceu o campeonato de 2000, marcando o início de uma era de domínio?",
+                "opcoes": ["Mika Häkkinen", "Fernando Alonso", "Michael Schumacher", "Kimi Räikkönen"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Quantos títulos consecutivos Michael Schumacher venceu de 2000 a 2004?",
+                "opcoes": ["3", "4", "5", "6"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Quem interrompeu a sequência de títulos de Schumacher em 2005 e 2006?",
+                "opcoes": ["Kimi Räikkönen", "Lewis Hamilton", "Fernando Alonso", "Jenson Button"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Qual equipe surpreendeu ao vencer o campeonato de 2009?",
+                "opcoes": ["Red Bull", "Ferrari", "McLaren", "Brawn GP"],
+                "respostas": 3
+            },
+            {
+                "perguntas": "Quem venceu o campeonato de 2010?",
+                "opcoes": ["Lewis Hamilton", "Sebastian Vettel", "Fernando Alonso", "Jenson Button"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Qual equipe dominou a Fórmula 1 a partir de 2014?",
+                "opcoes": ["Red Bull", "Ferrari", "McLaren", "Mercedes"],
+                "respostas": 3
+            },
+            {
+                "perguntas": "Quantos títulos mundiais Lewis Hamilton conquistou entre 2014 e 2019?",
+                "opcoes": ["4", "5", "6", "7"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Quem venceu o campeonato de 2021?",
+                "opcoes": ["Lewis Hamilton", "Sebastian Vettel", "Max Verstappen", "Nico Rosberg"],
+                "respostas": 2
+            }
+        ]
+
+    ];
+
+    var perguntaAtual = 0;
+    var acertos = 0;
+    var erros = 0;
+    var startTime;
+    var perguntasSelecionadas = [];
+    var tentativa = 0;
+
+    const tipoQuiz = 'História da F1';
+    var idUsuario = 0
+
+    function embaralharPerguntas() {
+        perguntasSelecionadas = [];
+        var perguntasDisponiveis = perguntasQuiz[0].slice();
+
+        for (var i = 0; i < 10; i++) {
+            var indiceAleatorio = Math.floor(Math.random() * perguntasDisponiveis.length);
+            perguntasSelecionadas.push(perguntasDisponiveis.splice(indiceAleatorio, 1)[0]);
+        }
+
+        for (var index = perguntasSelecionadas.length - 1; index > 0; index--) {
+            var aleatorio = Math.floor(Math.random() * (index + 1));
+            var agora = perguntasSelecionadas[index];
+            perguntasSelecionadas[index] = perguntasSelecionadas[aleatorio];
+            perguntasSelecionadas[aleatorio] = agora;
+        }
+        return perguntasSelecionadas;
+    }
+
+    function verificarTentativas() {
+        fetch(`/quiz/verificarTentativas/${idUsuario}/${tipoQuiz}`)
+            .then(resposta => resposta.json())
+            .then(data => {
+                tentativa = data.tentativas;
+                if (tentativa >= 3) {
+                    alert('Você já atingiu o limite de tentativas para esse quiz');
+                    window.location = "./menu.html";
+                } else {
+                    iniciar();
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao verificar tentativas:', error);
+            });
+    }
+
+    document.getElementById('iniciar').addEventListener('click', function () {
+        verificarTentativas();
+    });
+
+    function iniciar() {
+
+        var perguntasSelecionadas = embaralharPerguntas();
+        inicio.style.display = "none";
+
+        startTime = new Date();
+
+        mostrarPergunta(perguntasSelecionadas);
+    }
+
+    function mostrarPergunta(perguntasSelecionadas) {
+        if (perguntaAtual < perguntasSelecionadas.length) {
+            pergunta.innerHTML = perguntasSelecionadas[perguntaAtual].perguntas;
+            opcao1.innerHTML = perguntasSelecionadas[perguntaAtual].opcoes[0];
+            opcao2.innerHTML = perguntasSelecionadas[perguntaAtual].opcoes[1];
+            opcao3.innerHTML = perguntasSelecionadas[perguntaAtual].opcoes[2];
+            opcao4.innerHTML = perguntasSelecionadas[perguntaAtual].opcoes[3];
+            resposta.innerHTML = '';
+
+        } else {
+            finalizarQuiz();
+        }
+    }
+
+    function analisar(opcaoEscolhida) {
+        var respostaCerta = perguntasSelecionadas[perguntaAtual].respostas;
+        if (opcaoEscolhida == respostaCerta) {
+            acertos++;
+            resposta.innerHTML = ' <b style="color: green;">SUA RESPOSTA ESTÁ CORRETA</b>';
+        } else {
+            erros++;
+            resposta.innerHTML = ' <b style="color: red;">SUA RESPOSTA ESTÁ ERRADA</b>';
+        }
+        document.getElementById('opcao1').disabled = true;
+        document.getElementById('opcao2').disabled = true;
+        document.getElementById('opcao3').disabled = true;
+        document.getElementById('opcao4').disabled = true;
+
+        setTimeout(() => {
+            perguntaAtual++;
+            mostrarPergunta(perguntasSelecionadas);
+
+            document.getElementById('opcao1').disabled = false;
+            document.getElementById('opcao2').disabled = false;
+            document.getElementById('opcao3').disabled = false;
+            document.getElementById('opcao4').disabled = false;
+        }, 1000);
+    }
+
+    function finish(){
+        window.location = "./menu.html";
+    }
+
+    function finalizarQuiz() {
+        var endTime = new Date();
+        var totalTime = (endTime - startTime);
+
+        var horas = Math.floor(totalTime / 3600000);
+        var minutos = Math.floor((totalTime % 3600000) / 60000);
+        var segundos = Math.floor((totalTime % 60000) / 1000);
+        var milissegundos = totalTime % 1000;
+
+        horas = String(horas).padStart(2, '0');
+        minutos = String(minutos).padStart(2, '0');
+        segundos = String(segundos).padStart(2, '0');
+        milissegundos = String(milissegundos).padStart(3, '0');
+
+        var tempoFormatado = `${horas}:${minutos}:${segundos}.${milissegundos}`;
+
+        finalizacao.innerHTML = `
+        <p>VOCÊ ACERTOU <b>${acertos}</b> DE <b>${perguntasSelecionadas.length}</b> QUESTÕES</p>
+    <p>Número de Erros: <b>${erros}</b></p>
+    <p>Tempo Total: <b>${tempoFormatado}</b></p>`;
+
+        tentativa++
+
+        var dadosQuiz = {
+            idUsuario: idUsuario,
+            acertos: acertos,
+            erros: erros,
+            tentativa: tentativa,
+            tempo: tempoFormatado,
+            tipoQuiz: tipoQuiz
+        };
+
+        enviarDadosQuiz(dadosQuiz);
+
+        pergunta.style.display = "none";
+        opcoes.style.display = "none";
+        resposta.style.display = "none";
+        finalizar.style.display = "flex"
+
+    }
+    ///////////////////////////////////////////////////////////////////////
+
+    function enviarDadosQuiz(dadosQuiz) {
+        fetch('/quiz/registrarTentativa', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dadosQuiz)
+        })
+            .then(resposta => {
+                if (!resposta.ok) {
+                    throw new Error('Erro ao enviar dados do quiz para o servidor');
+                }
+                console.log('Dados do quiz enviados com sucesso');
+            })
+            .catch(error => {
+                console.error('Erro ao enviar dados do quiz para o servidor:', error);
+            });
+    }
+
+    ///////////////////////////////////////////////////////////////////////
     window.onload = async function () {
         validarSessao();
         await carregarInfoUsuario();
@@ -68,20 +413,21 @@
         return fetch(`/usuarios/listarInfo/${encodeURIComponent(sessionStorage.EMAIL_USUARIO)}`, {
             method: 'GET',
         })
-        .then(resposta => {
-            if (!resposta.ok) {
-                throw new Error('Erro ao obter dados do usuário');
-            }
-            return resposta.json();
-        })
-        .catch(erro => {
-            console.error(`Erro ao obter dados do usuário: ${erro}`);
-            throw erro; // Propagar o erro para o ponto de chamada
-        });
+            .then(resposta => {
+                if (!resposta.ok) {
+                    throw new Error('Erro ao obter dados do usuário');
+                }
+                return resposta.json();
+            })
+            .catch(erro => {
+                console.error(`Erro ao obter dados do usuário: ${erro}`);
+                throw erro; // Propagar o erro para o ponto de chamada
+            });
     }
 
     async function carregarInfoUsuario() {
         const email = sessionStorage.EMAIL_USUARIO;
+
 
         try {
             let dados = JSON.parse(sessionStorage.getItem('dadosUsuario'));
@@ -105,6 +451,8 @@
     }
 
     function preencherInformacoesUsuario(dados) {
+
+        idUsuario = dados.idUsuario;
         document.querySelector(".hello").innerHTML = `
         <img class="profile" src="${dados.imgPerfil}" alt="Perfil" />
         <h3>Olá, <p>${dados.nome}</p>!</h3>
@@ -115,3 +463,5 @@
         `;
     }
 </script>
+
+</html>

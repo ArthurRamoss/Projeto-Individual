@@ -216,7 +216,6 @@ body {
   width: 100%;
 }
 
-
 .cards h1 {
   font-size: 22px;
   border-bottom: solid white 1px;
@@ -318,7 +317,6 @@ canvas {
 }
 
 .header-left {
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
@@ -334,15 +332,12 @@ canvas {
 
 .dash-right {
   display: flex;
-  width: 70%;
-  height: fit-content;
-  background-color: #161618;
-  position: relative;
-  top: 0;
-  left: 25%;
+  flex-direction: row; 
+  width: calc(100% - 20%); 
   height: 100vh;
   overflow: auto;
 }
+
 
 .header-left h1 {
   color: #e10600;
@@ -428,4 +423,168 @@ canvas {
   text-align: center;
   padding: 10px 15px;
   cursor: pointer;
+}
+
+.mostrarQuiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 40px;
+  width: 780px;
+  height: fit-content;
+  background-color: #fff;
+  border-radius: 10%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.inicio {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.iniciar {
+  border-radius: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 25px;
+  margin-top: 20px;
+  margin-left: 265px;
+  margin: auto;
+  display: flex;
+}
+
+.iniciar:hover {
+  background-color: #2980b9;
+}
+
+.finalizar {
+  border-radius: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 25px;
+  margin-top: 20px;
+  margin-left: 265px;
+  margin: auto;
+  display: flex;
+}
+
+.finalizar:hover {
+  background-color: #2980b9;
+}
+
+.finalizacao {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  flex-direction: column;
+}
+
+.finalizacao p {
+  font-weight: 600;
+}
+
+.pergunta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.opcoes {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os elementos quebrem para a próxima linha */
+  max-width: 400px; /* Define a largura máxima para a div opcoes */
+  margin-top: 20px; /* Adiciona um espaço entre a pergunta e as opções */
+  height: 100px;
+  width: 1000px;
+}
+
+.opcoes button {
+  justify-content: center;
+  border-radius: 29px;
+  padding: 9px 18px;
+  margin: 5px; /* Espaçamento entre os botões */
+  background-color: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.85);
+  border: transparent 1px solid;
+  font-size: 20px;
+  width: calc(50% - 10px); /* Define a largura para ocupar metade da largura da div opcoes e considera o espaço entre os botões */
+}
+
+.opcoes button:hover {
+  background-color: #2980b9;
+}
+
+.resposta {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}
+.resultado-quiz {
+  background-color: #f2f2f2;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 350px;
+  display: flex; /* Adiciona um display flex para alinhar os itens na horizontal */
+  flex-direction: column; /* Altera a direção do flex para coluna */
+  align-items: center; /* Centraliza os itens horizontalmente */
+}
+
+.dash-right .resultado-quiz {
+  background-color: #f2f2f2;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 350px;
+  display: flex; /* Adiciona um display flex para alinhar os itens na horizontal */
+  flex-direction: column; /* Altera a direção do flex para coluna */
+  align-items: center; /* Centraliza os itens horizontalmente */
+  margin: auto;
+}
+
+.resultado-tentativas {
+  width: 100%; /* Define a largura para ocupar toda a largura disponível */
+  display: flex; /* Adiciona um display flex para alinhar os itens na horizontal */
+  align-items: center; /* Centraliza os itens horizontalmente */
+  margin-top: 10px; /* Adiciona um espaçamento no topo */
+}
+
+.resultado-tentativas .tentativa {
+  width: 100%; /* Define a largura para ocupar toda a largura disponível */
+  border: 1px solid #ccc; /* Adiciona uma borda para separar as tentativas */
+  border-radius: 5px; /* Adiciona bordas arredondadas */
+  padding: 10px; /* Adiciona um espaçamento interno */
+  margin-top: 10px; /* Adiciona um espaçamento no topo */
+}
+
+.tentativa span {
+  font-weight: bold;
 }
