@@ -9,6 +9,7 @@ function obterRanking() {
         e.logo,
         q.acertos,
         q.erros,
+        q.tentativa,
         q.tempo
     FROM 
         usuario u
@@ -36,6 +37,7 @@ function obterRankingPorTipo(tipoQuiz) {
         e.logo,
         q.acertos,
         q.erros,
+        Q.tentativa,
         q.tempo
     FROM 
         usuario u

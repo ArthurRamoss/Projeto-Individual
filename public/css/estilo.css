@@ -642,3 +642,218 @@ input {
   padding: 50px 0;
   background-color: #f5f5f5;
 }
+
+.podio {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  align-items: flex-end;
+  width: 100%;
+  margin: auto;
+}
+
+.podio .box {
+  width: 30%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+
+
+.p1 {
+  height: 300px;
+}
+
+.p2 {
+  height: 260px;
+}
+
+.p3 {
+  height: 250px;
+}
+
+.lista-ranking {
+  margin-top: 50px;
+  background-color: #f9f9f9;
+  width: 70%;
+  margin: auto;
+}
+
+.lista-ranking ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lista-ranking li {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.competidor-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 3px solid black;
+  padding: 10px;
+}
+
+.competidor-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.competidor-info .num- {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.competidor-info .nome {
+  flex-grow: 1;
+  /* Para ocupar o espaço restante */
+  margin-right: 10px;
+}
+
+.competidor-info .acertos,
+.competidor-info .tempo {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+}
+
+/* Adicione estilos personalizados aqui */
+.competidor-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 3px solid black;
+}
+
+.competidor-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.nome {
+  flex-grow: 1;
+  margin-right: 10px;
+  font: 25px;
+  font-weight: 800;
+}
+
+.competidor-info .acertos,
+.competidor-info .tempo {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.logo-num {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  justify-content: center;
+  margin: auto;
+}
+
+.logo-num img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.imgPerfil {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.ranking-container {
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+}
+
+.competidor-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 3px solid black;
+  max-width: 700px;
+  margin: auto;
+}
+
+.competidor-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.nome {
+  flex-grow: 1;
+  font-size: 25px;
+  font-weight: 800;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.competidor-info .acertos,
+.competidor-info .tempo {
+  font-size: 20px;
+  color: #666;
+  margin-right: 10px;
+}
+
+.ranking-container ul {
+  list-style-type: none;
+}
+
+.tab-container {
+  display: flex;
+  justify-items: flex-end;
+  margin-left: 150px;
+}
+
+.ranking-container h2 {
+  margin: auto;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.tituloRanking {
+  margin-top: 50px !important;
+  margin-bottom: 20px !important;
+
+}
+
+.competidor {
+  margin-bottom: 40px !important;
+}
+
+.podio .competidor-info .linha {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 1.1em;
+}

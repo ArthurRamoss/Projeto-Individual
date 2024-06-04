@@ -13,224 +13,7 @@
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <style>
-        /* Adicione estilos personalizados aqui */
-        .podio {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 50px;
-            align-items: flex-end;
-            width: 100%;
-            margin: auto;
-        }
 
-        .podio .box {
-            width: 30%;
-            padding: 20px;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 20px;
-        }
-
-
-        .p1 {
-            height: 300px;
-        }
-
-        .p2 {
-            height: 260px;
-        }
-
-        .p3 {
-            height: 250px;
-        }
-
-        .lista-ranking {
-            margin-top: 50px;
-            background-color: #f9f9f9;
-            width: 70%;
-            margin: auto;
-        }
-
-        .lista-ranking ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .lista-ranking li {
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .competidor-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            border: 3px solid black;
-            padding: 10px;
-        }
-
-        .competidor-info img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .competidor-info .num- {
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .competidor-info .nome {
-            flex-grow: 1;
-            /* Para ocupar o espaço restante */
-            margin-right: 10px;
-        }
-
-        .competidor-info .acertos,
-        .competidor-info .tempo {
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        .tab {
-            display: none;
-        }
-
-        .tab.active {
-            display: block;
-        }
-
-        /* Adicione estilos personalizados aqui */
-        .competidor-info {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 10px;
-            border: 3px solid black;
-        }
-
-        .competidor-info img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-
-        .nome {
-            flex-grow: 1;
-            margin-right: 10px;
-            font: 25px;
-            font-weight: 800;
-        }
-
-        .competidor-info .acertos,
-        .competidor-info .tempo {
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        .logo-num {
-            display: flex;
-            align-items: center;
-            margin-bottom: 5px;
-            justify-content: center;
-            margin: auto;
-        }
-
-        .logo-num img {
-            width: 30px;
-            height: 30px;
-            margin-right: 5px;
-        }
-
-        .imgPerfil {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-
-        .ranking-container {
-            background-color: white;
-            width: 80%;
-            margin: auto;
-            display: flex;
-            justify-content: center;
-            border-radius: 25px;
-        }
-
-        .competidor-info {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 10px;
-            border: 3px solid black;
-            max-width: 700px;
-            margin: auto;
-        }
-
-        .competidor-info img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-        }
-
-        .nome {
-            flex-grow: 1;
-            font-size: 25px;
-            font-weight: 800;
-            margin-right: 10px;
-            text-align: center;
-        }
-
-
-        .competidor-info .acertos,
-        .competidor-info .tempo {
-            font-size: 20px;
-            color: #666;
-            margin-right: 10px;
-        }
-
-        .ranking-container ul {
-            list-style-type: none;
-        }
-
-        .tab-container {
-            display: flex;
-            justify-items: flex-end;
-            margin-left: 150px;
-        }
-
-        .ranking-container h2 {
-            margin: auto;
-            font-size: 25px;
-            display: flex;
-            justify-content: center;
-            padding-bottom: 10px;
-        }
-
-        .tituloRanking {
-            margin-top: 50px !important;
-            margin-bottom: 20px !important;
-
-        }
-
-        .competidor {
-            margin-bottom: 40px !important;
-        }
-
-        .podio .competidor-info .linha {
-            display: block;
-            width: 100%;
-            text-align: center;
-            font-size: 1.1em;
-        }
-    </style>
 </head>
 
 <body>
@@ -255,15 +38,15 @@
     </div>
 
     <div class="tab-container">
-        <button class="tab-link" onclick="openTab(event, 'rankingGeral')">Ranking Geral</button>
-        <button class="tab-link" onclick="openTab(event, 'rankingEquipes')">Ranking por Equipes</button>
-        <button class="tab-link" onclick="openTab(event, 'rankingPilotos')">Ranking de Pilotos</button>
-        <button class="tab-link" onclick="openTab(event, 'rankingHistoria')">Ranking de História</button>
+        <button class="tabName tab-link" onclick="openTab(event, 'Geral')">Ranking Geral</button>
+        <button class="tabName tab-link" onclick="openTab(event, 'Equipes')">Ranking por Equipes</button>
+        <button class="tabName tab-link" onclick="openTab(event, 'Pilotos')">Ranking de Pilotos</button>
+        <button class="tabName tab-link" onclick="openTab(event, 'Historia')">Ranking de História</button>
     </div>
 
     <div class="ranking-container">
-        <div id="rankingGeral" class="tab">
-            <h2 class="tituloRanking">Ranking Geral</h2>
+        <div id="Geral" class="tab">
+            <h2 class="tituloRanking">Ranking Geral</h2><br>
             <div class="podio">
                 <div class="box p2">
                     <h2>2º Lugar</h2>
@@ -281,7 +64,7 @@
             <ul id="listaCompetidoresGeral" class="competidores"></ul>
         </div>
 
-        <div id="rankingEquipes" class="tab">
+        <div id="Equipes" class="tab">
             <h2 class="tituloRanking">Ranking por Equipes</h2>
             <div class="podio">
                 <div class="box p2">
@@ -300,7 +83,7 @@
             <ul id="listaCompetidoresEquipes" class="competidores"></ul>
         </div>
 
-        <div id="rankingPilotos" class="tab">
+        <div id="Pilotos" class="tab">
             <h2 class="tituloRanking">Ranking de Pilotos</h2>
             <div class="podio">
                 <div class="box p2">
@@ -319,7 +102,7 @@
             <ul id="listaCompetidoresPilotos" class="competidores"></ul>
         </div>
 
-        <div id="rankingHistoria" class="tab">
+        <div id="Historia" class="tab">
             <h2 class="tituloRanking">Ranking de História</h2>
             <div class="podio">
                 <div class="box p2">
@@ -338,133 +121,184 @@
             <ul id="listaCompetidoresHistoria" class="competidores"></ul>
         </div>
     </div>
-
-
-    <!--footer inicio-->
-    <div class="footer">
-        <div class="container">
-            <h4>Feito por Arthur Ramos &hearts; SPTech &copy; 2024</h4>
-            <span class="version">v1.0.0</span>
-        </div>
-    </div>
-    <!--footer fim-->
-
 </body>
 
-</html>
 
-<script>
-    // Função para buscar e preencher dinamicamente a lista de competidores para cada ranking
-    function carregarRanking(tipo) {
-        fetch(`/ranking/obterRanking?tipo=${tipo}`)
-            .then(response => response.json())
-            .then(data => preencherCompetidores(data, tipo))
-            .catch(error => console.error(`Erro ao obter ranking ${tipo}:`, error));
+    <script>
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+
+    tabcontent = document.getElementsByClassName("tab");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
     }
 
-    function carregarRanking(tipo) {
-        fetch(`/ranking/obterRanking?tipo=${tipo}`)
-            .then(response => response.json())
-            .then(data => preencherCompetidores(data, tipo))
-            .catch(error => console.error(`Erro ao obter ranking ${tipo}:`, error));
+    tablinks = document.getElementsByClassName("tab-link");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
 
-    function preencherCompetidores(ranking, tipo) {
-        const listaCompetidores = document.getElementById(`listaCompetidores${tipo}`);
-        listaCompetidores.innerHTML = '';
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
 
-        ranking.forEach((competidor, index) => {
-            const li = document.createElement('li');
-            li.classList.add('competidor');
-
-            li.innerHTML = `
-            <div class="competidor-info">
-                    <img src="${competidor.imgPerfil}" alt="Imagem de Perfil">
-                    <div class="logo-num">
-                        <img src="${competidor.logo}" alt="Logo Equipe">
-                        <img src="${competidor.imgNumPiloto}" alt="Logo Numero piloto">
-                    </div>
-                    <span class="nome">${competidor.nome}</span>
-                    <span class="acertos">Pontuação: <strong>${competidor.acertos}</strong></span>
-                    <span class="tempo">Tempo: <strong>${competidor.tempo}</strong></span>
-                </div>
-        `;
-
-            listaCompetidores.appendChild(li);
-
-            // Se for um dos três primeiros colocados, atualizar os elementos correspondentes
-            if (index === 0) {
-                preencherPrimeiroColocado(competidor, tipo);
-            } else if (index === 1) {
-                preencherSegundoColocado(competidor, tipo);
-            } else if (index === 2) {
-                preencherTerceiroColocado(competidor, tipo);
-            }
-        });
+    if (tabName === 'Geral') {
+        carregarRankingGeral();
+    } else {
+        carregarRankingPorTipo(tabName);
     }
-
-    function preencherPrimeiroColocado(competidor, tipo) {
-        const primeiroColocado = document.getElementById(`primeiroColocado${tipo}`);
-        primeiroColocado.innerHTML = `
-            <img src="${competidor.imgPerfil}" class="imgPerfil">
-            <div class="logo-num">
-                <img src="${competidor.logo}" alt="Logo Equipe">
-                <img src="${competidor.imgNumPiloto}" alt="Logo Numero piloto">
-            </div>
-            <div class="linha nome">${competidor.nome}</div>
-            <div class="linha acertos">Pontuação: <strong>${competidor.acertos}</strong></div>
-            <div class="linha tempo">Tempo: <strong>${competidor.tempo}</strong></div>
-        `;
-    }
-
-    function preencherSegundoColocado(competidor, tipo) {
-        const segundoColocado = document.getElementById(`segundoColocado${tipo}`);
-        segundoColocado.innerHTML = `
-            <img src="${competidor.imgPerfil}" class="imgPerfil">
-            <div class="logo-num">
-                <img src="${competidor.logo}" alt="Logo Equipe">
-                <img src="${competidor.imgNumPiloto}" alt="Logo Numero piloto">
-            </div>
-            <div class="linha nome">${competidor.nome}</div>
-            <div class="linha acertos">Pontuação: <strong>${competidor.acertos}</strong></div>
-            <div class="linha tempo">Tempo: <strong>${competidor.tempo}</strong></div>
-        `;
-    }
-
-    function preencherTerceiroColocado(competidor, tipo) {
-        const terceiroColocado = document.getElementById(`terceiroColocado${tipo}`);
-        terceiroColocado.innerHTML = `
-            <img src="${competidor.imgPerfil}" class="imgPerfil">
-            <div class="logo-num">
-                <img src="${competidor.logo}" alt="Logo Equipe">
-                <img src="${competidor.imgNumPiloto}" alt="Logo Numero piloto">
-            </div>
-            <div class="linha nome">${competidor.nome}</div>
-            <div class="linha acertos">Pontuação: <strong>${competidor.acertos}</strong></div>
-            <div class="linha tempo">Tempo: <strong>${competidor.tempo}</strong></div>
-        `;
-    }
-
-    function openTab(event, tabName) {
-    const tabs = document.getElementsByClassName("tab");
-    for (let tab of tabs) {
-        tab.classList.remove("active");
-    }
-    document.getElementById(tabName).classList.add("active");
-
-    carregarRanking(tabName.replace('ranking', ''));
 }
 
+function carregarRankingGeral() {
+    fetch('/ranking/obterRanking')
+        .then(resposta => resposta.json())
+        .then(data => preencherCompetidoresGeral(data))
+        .catch(erro => console.error('Erro ao carregar o ranking geral:', erro));
+}
+
+function carregarRankingPorTipo(tipoQuiz) {
+    fetch(`/ranking/obterRankingPorTipo/${tipoQuiz}`)
+        .then(resposta => resposta.json())
+        .then(data => preencherCompetidoresPorTipo(data, tipoQuiz))
+        .catch(erro => console.error(`Erro ao carregar o ranking de ${tipoQuiz}:`, erro));
+}
+
+function preencherCompetidoresGeral(data) {
+    let listaCompetidores = document.getElementById('listaCompetidoresGeral');
+    listaCompetidores.innerHTML = ''; // Limpar lista
+
+    data.forEach((competidor, index) => {
+        if (index === 0) {
+            document.getElementById('primeiroColocadoGeral').innerHTML = `
+                <img src="${competidor.imgPerfil}" class="imgPerfil">
+                <div class="logo-num">
+                    <img src="${competidor.logo}" alt="Logo Equipe">
+                    <img src="${competidor.imgNumPiloto}" alt="Logo Numero piloto">
+                </div>
+                <div class="linha nome">${competidor.nome}</div>
+                <div class="linha acertos">Pontuação: <strong>${competidor.acertos}</strong></div>
+                <div class="linha tempo">Tempo: <strong>${competidor.tempo}</strong></div>
+                <div class="linha tentativa"><strong>${competidor.tentativa}ª Tentativa/strong></div>
+            `;
+        } else if (index === 1) {
+            document.getElementById('segundoColocadoGeral').innerHTML = `
+                <img src="${competidor.imgPerfil}" class="imgPerfil">
+                <div class="logo-num">
+                    <img src="${competidor.logo}" alt="Logo Equipe">
+                    <img src="${competidor.imgNumPiloto}" alt="Logo Numero piloto">
+                </div>
+                <div class="linha nome">${competidor.nome}</div>
+                <div class="linha acertos">Pontuação: <strong>${competidor.acertos}</strong></div>
+                <div class="linha tempo">Tempo: <strong>${competidor.tempo}</strong></div>
+                <div class="linha tentativa"><strong>${competidor.tentativa}ª Tentativa/strong></div>
+                
+            `;
+        } else if (index === 2) {
+            document.getElementById('terceiroColocadoGeral').innerHTML = `
+                <img src="${competidor.imgPerfil}" class="imgPerfil">
+                <div class="logo-num">
+                    <img src="${competidor.logo}" alt="Logo Equipe">
+                    <img src="${competidor.imgNumPiloto}" alt="Logo Numero piloto">
+                </div>
+                <div class="linha nome">${competidor.nome}</div>
+                <div class="linha acertos">Pontuação: <strong>${competidor.acertos}</strong></div>
+                <div class="linha tempo">Tempo: <strong>${competidor.tempo}</strong></div>
+                <div class="linha tentativa"><strong>${competidor.tentativa}ª Tentativa/strong></div>
+
+            `;
+        } else {
+            let li = document.createElement('li');
+            li.className = 'competidor-info';
+
+            li.innerHTML = `
+                <img src="${competidor.imgPerfil}" alt="Imagem de Perfil">
+                <div class="logo-num">
+                    <img src="${competidor.logo}" alt="Logo Equipe">
+                    <img src="${competidor.imgNumPiloto}" alt="Logo Numero piloto">
+                </div>
+                <span class="nome">${competidor.nome}</span>
+                <span class="acertos">Pontuação: <strong>${competidor.acertos}</strong></span>
+                <span class="tempo">Tempo: <strong>${competidor.tempo}</strong></span>
+                <div class="linha tentativa"><strong>${competidor.tentativa}ª Tentativa/strong></div>
+
+            `;
+
+            listaCompetidores.appendChild(li);
+        }
+    });
+}
+
+function preencherCompetidoresPorTipo(data, tipo) {
+    let listaCompetidores = document.getElementById(`listaCompetidores${tipo}`);
+    listaCompetidores.innerHTML = ''; // Limpar lista
+
+    data.forEach((competidor, index) => {
+        if (index === 0) {
+            document.getElementById(`primeiroColocado${tipo}`).innerHTML = `
+                <img src="${competidor.imgPerfil}" class="imgPerfil">
+                <div class="logo-num">
+                    <img src="${competidor.logo}" alt="Logo Equipe">
+                    <img src="${competidor.imgNumPiloto}" alt="Logo Numero piloto">
+                </div>
+                <div class="linha nome">${competidor.nome}</div>
+                <div class="linha acertos">Pontuação: <strong>${competidor.acertos}</strong></div>
+                <div class="linha tempo">Tempo: <strong>${competidor.tempo}</strong></div>
+                <div class="linha tentativa"><strong>${competidor.tentativa}ª Tentativa/strong></div>
+
+            `;
+        } else if (index === 1) {
+            document.getElementById(`segundoColocado${tipo}`).innerHTML = `
+                <img src="${competidor.imgPerfil}" class="imgPerfil">
+                <div class="logo-num">
+                    <img src="${competidor.logo}" alt="Logo Equipe">
+                    <img src="${competidor.imgNumPiloto}" alt="Logo Numero piloto">
+                </div>
+                <div class="linha nome">${competidor.nome}</div>
+                <div class="linha acertos">Pontuação: <strong>${competidor.acertos}</strong></div>
+                <div class="linha tempo">Tempo: <strong>${competidor.tempo}</strong></div>
+                <div class="linha tentativa"><strong>${competidor.tentativa}ª Tentativa/strong></div>
+
+            `;
+        } else if (index === 2) {
+            document.getElementById(`terceiroColocado${tipo}`).innerHTML = `
+                <img src="${competidor.imgPerfil}" class="imgPerfil">
+                <div class="logo-num">
+                    <img src="${competidor.logo}" alt="Logo Equipe">
+                    <img src="${competidor.imgNumPiloto}" alt="Logo Numero piloto">
+                </div>
+                <div class="linha nome">${competidor.nome}</div>
+                <div class="linha acertos">Pontuação: <strong>${competidor.acertos}</strong></div>
+                <div class="linha tempo">Tempo: <strong>${competidor.tempo}</strong></div>
+                <div class="linha tentativa"><strong>${competidor.tentativa}ª Tentativa/strong></div>
+
+            `;
+        } else {
+            let li = document.createElement('li');
+            li.className = 'competidor-info';
+
+            li.innerHTML = `
+                <img src="${competidor.imgPerfil}" class="imgPerfil">
+                <div class="logo-num">
+                    <img src="${competidor.logo}" alt="Logo Equipe">
+                    <img src="${competidor.imgNumPiloto}" alt="Logo Numero piloto">
+                </div>
+                <div class="linha nome">${competidor.nome}</div>
+                <div class="linha acertos">Pontuação: <strong>${competidor.acertos}</strong></div>
+                <div class="linha tempo">Tempo: <strong>${competidor.tempo}</strong></div>
+                <div class="linha tentativa"><strong>${competidor.tentativa}ª Tentativa/strong></div>
+
+            `;
+
+            listaCompetidores.appendChild(li);
+        }
+    });
+}
+
+// Carregar o ranking geral inicialmente
 document.addEventListener('DOMContentLoaded', () => {
-    openTab(null, 'rankingGeral');
+    document.querySelector('.tab-link').click();
 });
 
 
-    document.addEventListener('DOMContentLoaded', () => {
-        openTab(null, 'rankingGeral');
-        carregarRanking('Geral');
-        carregarRanking('Equipes');
-        carregarRanking('Pilotos');
-        carregarRanking('Historia');
-    });
-</script>
+    </script>
+
+</html>
