@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1TECH | Quiz Equipes</title>
+
+
+    <link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/estilo.css" />
+    <script src="../js/sessao.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="validarSessao()" style="background-color: #161618;">
+    <!-- <body onload="validarSessao()"> -->
+
+    <div class="janela">
+
+
+        <div class="header-left">
+
+            <h1>F1TECH</h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./menu.html">
+                    <h3>Menu</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./QuizHistoria.html">
+                    <h3>Quiz sobre a historia</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav">
+                <h3>Quiz sobre as equipes</h3>
+            </div>
+
+
+            <div class="btn-nav-white">
+                <a href="./QuizPilotos.html">
+                    <h3>Quiz sobre os pilotos</h3>
+                </a>
+            </div>
+        </div>
+
+        <div class="dash-right">
+
+            <div id="quiz" class="quiz">
+                <div id="inicio">
+                    <h2> MOSTRE O SEU CONHECIMENTO SOBRE AS EQUIPES DE F1</h2>
+                    <button id="iniciar" class="iniciar" onclick="iniciar()">Iniciar Quiz</button>
+                    <div class="pontuacao" id="pontuacao"></div>
+                </div>
+                <div class="mostrarQuiz">
+                    <div class="pergunta" id="pergunta"></div>
+                    <div id="opcoes" class="opcoes">
+                        <button id="opcao1" onclick="analisar(0)"></button>
+                        <button id="opcao2" onclick="analisar(1)"></button>
+                        <button id="opcao3" onclick="analisar(2)"></button>
+                        <button id="opcao4" onclick="analisar(3)"></button>
+                    </div>
+                </div>
+                <div class="finalizacao" id="finalizacao"></div>
+                <div class="resposta" id="resposta"></div>
+                <button class="iniciar finalizar" id="finalizar" style="display: none;" onclick="finish()">Finalizar
+                    Quiz</button>
+            </div>
+
+        </div>
+
+</body>
+<script>
+
+    var perguntasQuiz = [
+        [
+            {
+                "perguntas": "Qual ano a Ferrari conquistou seu primeiro título de construtores?",
+                "opcoes": ["1961", "1950", "1975", "1980"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Quem é o jovem talento da Ferrari mencionado como uma estrela em ascensão?",
+                "opcoes": ["Charles Leclerc", "Sebastian Vettel", "Kimi Räikkönen", "Fernando Alonso"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Qual piloto trouxe um 'renascimento' para a Ferrari nos anos 2000?",
+                "opcoes": ["Michael Schumacher", "Niki Lauda", "Gilles Villeneuve", "Charles Leclerc"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Quem é o atual líder da equipe Ferrari?",
+                "opcoes": ["Frédéric Vasseur", "Charles Leclerc", "Michael Schumacher", "Niki Lauda"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Quantos títulos consecutivos de pilotos a Ferrari conquistou de 2000 a 2004?",
+                "opcoes": ["Dois", "Três", "Quatro", "Cinco"],
+                "respostas": 3
+            },
+            {
+                "perguntas": "Qual foi o piloto que conquistou quatro títulos consecutivos de pilotos para a Red Bull de 2010 a 2013?",
+                "opcoes": ["Sebastian Vettel", "Max Verstappen", "Lewis Hamilton", "Mark Webber"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Quem é o atual líder da equipe Red Bull Racing?",
+                "opcoes": ["Christian Horner", "Adrian Newey", "Helmut Marko", "Franz Tost"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Qual ano Max Verstappen quebrou o domínio de longo prazo da Mercedes e Lewis Hamilton?",
+                "opcoes": ["2021", "2019", "2020", "2022"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Qual fornecedora de motores tem sido fundamental no sucesso recente da Red Bull?",
+                "opcoes": ["Honda", "Renault", "Ferrari", "Mercedes"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Quem fundou a equipe McLaren em 1963?",
+                "opcoes": ["Bruce McLaren", "Ron Dennis", "Zak Brown", "Andreas Seidl"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Qual piloto da McLaren venceu o Grande Prêmio da Itália em 2021, marcando a primeira vitória da equipe em quase uma década?",
+                "opcoes": ["Lando Norris", "Daniel Ricciardo", "Lewis Hamilton", "Fernando Alonso"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Quem foram os dois pilotos da McLaren envolvidos em uma das rivalidades mais memoráveis da história da Fórmula 1 nos anos 80 e 90?",
+                "opcoes": ["Niki Lauda e Mika Häkkinen", "Ayrton Senna e Alain Prost", "Lewis Hamilton e Jenson Button", "Bruce McLaren e Emerson Fittipaldi"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Qual título de pilotos foi conquistado por Lewis Hamilton com a McLaren?",
+                "opcoes": ["2008", "2005", "2007", "2010"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Quando a Mercedes retornou à Fórmula 1 como equipe de fábrica?",
+                "opcoes": ["2010", "2009", "2012", "2008"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Quem liderou a Mercedes ao seu primeiro campeonato na era híbrida em 2014?",
+                "opcoes": ["Nico Rosberg", "Lewis Hamilton", "Michael Schumacher", "George Russell"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Quem foi o engenheiro técnico que contribuiu significativamente para o sucesso da Mercedes?",
+                "opcoes": ["Pat Fry", "Adrian Newey", "James Allison", "Ross Brawn"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Qual piloto quebrou a sequência de títulos de Lewis Hamilton em 2021?",
+                "opcoes": ["Sebastian Vettel", "Max Verstappen", "Valtteri Bottas", "Charles Leclerc"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Qual piloto da Mercedes se aposentou após vencer o campeonato em 2016?",
+                "opcoes": ["Lewis Hamilton", "Jenson Button", "Kimi Räikkönen", "Nico Rosberg"],
+                "respostas": 3
+            },
+            {
+                "perguntas": "Quem é o proprietário da equipe Aston Martin na Fórmula 1?",
+                "opcoes": ["Sebastian Vettel", "Lance Stroll", "Otmar Szafnauer", "Lawrence Stroll"],
+                "respostas": 3
+            },
+            {
+                "perguntas": "Quem é o piloto mais experiente da equipe Aston Martin?",
+                "opcoes": ["Lance Stroll", "Sebastian Vettel", "Otmar Szafnauer", "Lawrence Stroll"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Qual foi o ano do retorno da Aston Martin à Fórmula 1 como equipe de fábrica?",
+                "opcoes": ["2020", "2019", "2021", "2022"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Qual foi o resultado mais expressivo da equipe Aston Martin em 2023?",
+                "opcoes": ["Vitória", "Pole Position", "Volta Mais Rápida", "Duplo pódio"],
+                "respostas": 3
+            },
+            {
+                "perguntas": "Qual é a estratégia da Aston Martin para se tornar uma força dominante na Fórmula 1?",
+                "opcoes": ["Reduzir investimentos", "Contratar pilotos novatos", "Investir em infraestrutura e tecnologia", "Manter status quo"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Qual era o nome anterior da Scuderia AlphaTauri na Fórmula 1?",
+                "opcoes": ["Scuderia Ferrari", "Toro Rosso", "Red Bull Racing", "Mercedes AMG Petronas"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Quem foi o piloto que conquistou a primeira vitória da Toro Rosso em 2008?",
+                "opcoes": ["Pierre Gasly", "Sebastian Vettel", "Max Verstappen", "Daniel Ricciardo"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Qual marca de moda premium está associada à equipe AlphaTauri?",
+                "opcoes": ["Gucci", "Prada", "Versace", "AlphaTauri"],
+                "respostas": 3
+            },
+            {
+                "perguntas": "Qual piloto venceu o Grande Prêmio da Itália em 2020 pela AlphaTauri?",
+                "opcoes": ["Sebastian Vettel", "Max Verstappen", "Lewis Hamilton", "Pierre Gasly"],
+                "respostas": 3
+            },
+            {
+                "perguntas": "Que fornecedora de motores a AlphaTauri utiliza?",
+                "opcoes": ["Ferrari", "Mercedes", "Honda", "Renault"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Qual foi o ano de estreia da Haas F1 Team na Fórmula 1?",
+                "opcoes": ["2014", "2015", "2016", "2017"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Com quem a Haas F1 Team tem uma parceria técnica para desenvolver seu carro?",
+                "opcoes": ["Red Bull Racing", "Mercedes AMG Petronas", "Ferrari", "McLaren"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Qual equipe de NASCAR está associada ao proprietário da Haas F1 Team?",
+                "opcoes": ["Joe Gibbs Racing", "Hendrick Motorsports", "Stewart-Haas Racing", "Team Penske"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Quem foi o piloto da Haas F1 Team que conquistou pontos regularmente nos primeiros anos da equipe?",
+                "opcoes": ["Mick Schumacher", "Romain Grosjean", "Kevin Magnussen", "Nico Hülkenberg"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Qual é o objetivo principal da Haas F1 Team na Fórmula 1?",
+                "opcoes": ["Maximizar os lucros", "Desenvolver jovens talentos", "Garantir estabilidade financeira", "Subir no grid e desafiar equipes rivais"],
+                "respostas": 3
+            },
+            {
+                "perguntas": "Quem foi o fundador da Williams Racing?",
+                "opcoes": ["Sir Alan Jones", "Frank Williams", "Nelson Piquet", "Nigel Mansell"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Qual piloto NÃO fez parte da Williams Racing em algum momento de sua carreira?",
+                "opcoes": ["Alain Prost", "Ayrton Senna", "", "Damon Hill"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Em que década a Williams Racing foi fundada?",
+                "opcoes": ["Década de 1960", "Década de 1970", "Década de 1980", "Década de 1990"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Qual empresa adquiriu a Williams Racing em 2020?",
+                "opcoes": ["Red Bull Racing", "Ferrari", "Dorilton Capital", "Mercedes-AMG Petronas Formula One Team"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Quantos títulos de pilotos a Williams Racing conquistou ao longo de sua história?",
+                "opcoes": ["5", "7", "9", "11"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Quem foi o piloto da Renault que conquistou campeonatos mundiais de pilotos em 2005 e 2006?",
+                "opcoes": ["Fernando Alonso", "Michael Schumacher", "Sebastian Vettel", "Lewis Hamilton"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Qual era o nome anterior da Alpine F1 Team na Fórmula 1?",
+                "opcoes": ["Mercedes F1 Team", "Renault F1 Team", "Ferrari F1 Team", "Red Bull Racing"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Quem é o piloto da Alpine F1 Team em 2023?",
+                "opcoes": ["Nico Rosberg", "Max Verstappen", "Esteban Ocon", "Daniel Ricciardo"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Qual equipe de Fórmula 1 conquistou títulos de pilotos e construtores em 2005 e 2006?",
+                "opcoes": ["Red Bull Racing", "Mercedes AMG Petronas", "Ferrari", "Alpine F1 Team"],
+                "respostas": 3
+            },
+            {
+                "perguntas": "Qual é o objetivo principal da Alpine F1 Team na Fórmula 1?",
+                "opcoes": ["Desafiar as equipes de ponta", "Maximizar os lucros", "Garantir estabilidade financeira", "Subir no grid"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Qual era o nome anterior da equipe conhecida como Kick Sauber na Fórmula 1?",
+                "opcoes": ["BMW Sauber F1 Team", "Alpine F1 Team", "Red Bull Racing", "McLaren F1 Team"],
+                "respostas": 0
+            },
+            {
+                "perguntas": "Quem são os pilotos da Kick Sauber em 2023?",
+                "opcoes": ["Max Verstappen e Lewis Hamilton", "Kimi Räikkönen e Guanyu Zhou", "Sebastian Vettel e Daniel Ricciardo", "Fernando Alonso e Esteban Ocon"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Com quem a equipe Kick Sauber teve uma colaboração técnica de 2006 a 2009?",
+                "opcoes": ["Ferrari", "Mercedes-Benz", "BMW", "Renault"],
+                "respostas": 2
+            },
+            {
+                "perguntas": "Qual é o objetivo principal da Kick Sauber na Fórmula 1?",
+                "opcoes": ["Maximizar os lucros", "Desafiar as equipes de ponta", "Expandir a equipe", "Focar em competições de endurance"],
+                "respostas": 1
+            },
+            {
+                "perguntas": "Qual montadora decidiu aumentar sua participação na Kick Sauber de 75% para 100% em 2026?",
+                "opcoes": ["Ferrari", "Mercedes-Benz", "Audi", "BMW"],
+                "respostas": 2
+            }
+        ]
+
+    ];
+
+    var perguntaAtual = 0;
+    var acertos = 0;
+    var erros = 0;
+    var startTime;
+    var perguntasSelecionadas = [];
+    var tentativa = 0;
+
+    const tipoQuiz = 'Equipes';
+    var idUsuario = 0
+
+    function embaralharPerguntas() {
+        perguntasSelecionadas = [];
+        var perguntasDisponiveis = perguntasQuiz[0].slice();
+
+        for (var i = 0; i < 10; i++) {
+            var indiceAleatorio = Math.floor(Math.random() * perguntasDisponiveis.length);
+            perguntasSelecionadas.push(perguntasDisponiveis.splice(indiceAleatorio, 1)[0]);
+        }
+
+        for (var index = perguntasSelecionadas.length - 1; index > 0; index--) {
+            var aleatorio = Math.floor(Math.random() * (index + 1));
+            var agora = perguntasSelecionadas[index];
+            perguntasSelecionadas[index] = perguntasSelecionadas[aleatorio];
+            perguntasSelecionadas[aleatorio] = agora;
+        }
+        return perguntasSelecionadas;
+    }
+
+    function verificarTentativas() {
+        fetch(`/quiz/verificarTentativas/${idUsuario}/${tipoQuiz}`)
+            .then(resposta => resposta.json())
+            .then(data => {
+                tentativa = data.tentativas;
+                if (tentativa >= 3) {
+                    alert('Você já atingiu o limite de tentativas para esse quiz');
+                    window.location = "./menu.html";
+                } else {
+                    iniciar();
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao verificar tentativas:', error);
+            });
+    }
+
+    document.getElementById('iniciar').addEventListener('click', function () {
+        verificarTentativas();
+    });
+
+    function iniciar() {
+
+        var perguntasSelecionadas = embaralharPerguntas();
+        inicio.style.display = "none";
+
+        startTime = new Date();
+
+        mostrarPergunta(perguntasSelecionadas);
+    }
+
+    function mostrarPergunta(perguntasSelecionadas) {
+        if (perguntaAtual < perguntasSelecionadas.length) {
+            pergunta.innerHTML = perguntasSelecionadas[perguntaAtual].perguntas;
+            opcao1.innerHTML = perguntasSelecionadas[perguntaAtual].opcoes[0];
+            opcao2.innerHTML = perguntasSelecionadas[perguntaAtual].opcoes[1];
+            opcao3.innerHTML = perguntasSelecionadas[perguntaAtual].opcoes[2];
+            opcao4.innerHTML = perguntasSelecionadas[perguntaAtual].opcoes[3];
+            resposta.innerHTML = '';
+
+        } else {
+            finalizarQuiz();
+        }
+    }
+
+    function analisar(opcaoEscolhida) {
+        var respostaCerta = perguntasSelecionadas[perguntaAtual].respostas;
+        if (opcaoEscolhida == respostaCerta) {
+            acertos++;
+            resposta.innerHTML = ' <b style="color: green;">SUA RESPOSTA ESTÁ CORRETA</b>';
+        } else {
+            erros++;
+            resposta.innerHTML = ' <b style="color: red;">SUA RESPOSTA ESTÁ ERRADA</b>';
+        }
+        document.getElementById('opcao1').disabled = true;
+        document.getElementById('opcao2').disabled = true;
+        document.getElementById('opcao3').disabled = true;
+        document.getElementById('opcao4').disabled = true;
+
+        setTimeout(() => {
+            perguntaAtual++;
+            mostrarPergunta(perguntasSelecionadas);
+
+            document.getElementById('opcao1').disabled = false;
+            document.getElementById('opcao2').disabled = false;
+            document.getElementById('opcao3').disabled = false;
+            document.getElementById('opcao4').disabled = false;
+        }, 1000);
+    }
+
+    function finish() {
+        window.location = "./menu.html";
+    }
+
+    function finalizarQuiz() {
+        var endTime = new Date();
+        var totalTime = (endTime - startTime);
+
+        var horas = Math.floor(totalTime / 3600000);
+        var minutos = Math.floor((totalTime % 3600000) / 60000);
+        var segundos = Math.floor((totalTime % 60000) / 1000);
+        var milissegundos = totalTime % 1000;
+
+        horas = String(horas).padStart(2, '0');
+        minutos = String(minutos).padStart(2, '0');
+        segundos = String(segundos).padStart(2, '0');
+        milissegundos = String(milissegundos).padStart(3, '0');
+
+        var tempoFormatado = `${horas}:${minutos}:${segundos}.${milissegundos}`;
+
+        finalizacao.innerHTML = `
+        <p>VOCÊ ACERTOU <b>${acertos}</b> DE <b>${perguntasSelecionadas.length}</b> QUESTÕES</p>
+    <p>Número de Erros: <b>${erros}</b></p>
+    <p>Tempo Total: <b>${tempoFormatado}</b></p>`;
+
+        tentativa++
+
+        var dadosQuiz = {
+            idUsuario: idUsuario,
+            acertos: acertos,
+            erros: erros,
+            tentativa: tentativa,
+            tempo: tempoFormatado,
+            tipoQuiz: tipoQuiz
+        };
+
+        enviarDadosQuiz(dadosQuiz);
+
+        pergunta.style.display = "none";
+        opcoes.style.display = "none";
+        resposta.style.display = "none";
+        finalizar.style.display = "flex"
+
+    }
+    ///////////////////////////////////////////////////////////////////////
+
+    function enviarDadosQuiz(dadosQuiz) {
+        fetch('/quiz/registrarTentativa', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dadosQuiz)
+        })
+            .then(resposta => {
+                if (!resposta.ok) {
+                    throw new Error('Erro ao enviar dados do quiz para o servidor');
+                }
+                console.log('Dados do quiz enviados com sucesso');
+            })
+            .catch(error => {
+                console.error('Erro ao enviar dados do quiz para o servidor:', error);
+            });
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    window.onload = async function () {
+        validarSessao();
+        await carregarInfoUsuario();
+    };
+
+    let dadosUsuario = {}; // Objeto para armazenar os dados do usuário
+
+    function obterDadosUsuario() {
+        return fetch(`/usuarios/listarInfo/${encodeURIComponent(sessionStorage.EMAIL_USUARIO)}`, {
+            method: 'GET',
+        })
+            .then(resposta => {
+                if (!resposta.ok) {
+                    throw new Error('Erro ao obter dados do usuário');
+                }
+                return resposta.json();
+            })
+            .catch(erro => {
+                console.error(`Erro ao obter dados do usuário: ${erro}`);
+                throw erro; // Propagar o erro para o ponto de chamada
+            });
+    }
+
+    async function carregarInfoUsuario() {
+        const email = sessionStorage.EMAIL_USUARIO;
+
+        try {
+            let dados = JSON.parse(sessionStorage.getItem('dadosUsuario'));
+            console.log("Dados antes de verificar se estão vazios:", dados);
+
+            if (!dados) {
+                dados = await obterDadosUsuario(email);
+                console.log("Dados obtidos do usuário:", dados);
+                sessionStorage.setItem('dadosUsuario', JSON.stringify(dados));
+                console.log("Dados armazenados na sessionStorage:", JSON.parse(sessionStorage.getItem('dadosUsuario')));
+            }
+
+            if (dados) {
+                preencherInformacoesUsuario(dados[0]);
+            } else {
+                console.error("Dados do usuário não encontrados.");
+            }
+        } catch (error) {
+            console.error("Erro ao carregar informações do usuário:", error);
+        }
+    }
+
+    function preencherInformacoesUsuario(dados) {
+
+        idUsuario = dados.idUsuario;
+        document.querySelector(".hello").innerHTML = `
+        <img class="profile" src="${dados.imgPerfil}" alt="Perfil" />
+        <h3>Olá, <p>${dados.nome}</p>!</h3>
+        <div class="info">
+            <img src="${dados.logoEquipe}" alt="Logo da Equipe" />
+            <img src="${dados.imgNumPiloto}" alt="Número do Piloto" />
+        </div>
+        `;
+    }
+</script>
+
+</html>

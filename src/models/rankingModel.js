@@ -37,7 +37,7 @@ function obterRankingPorTipo(tipoQuiz) {
         e.logo,
         q.acertos,
         q.erros,
-        Q.tentativa,
+        q.tentativa,
         q.tempo
     FROM 
         usuario u

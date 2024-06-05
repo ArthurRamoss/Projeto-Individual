@@ -664,14 +664,19 @@ input {
 
 .p1 {
   height: 300px;
+  border:10px solid gold;
 }
 
 .p2 {
-  height: 260px;
+  height: 280px;
+  border: 10px solid silver;
+
 }
 
 .p3 {
-  height: 250px;
+  height: 260px;
+  border: 10px solid #cd7f32;
+
 }
 
 .lista-ranking {
@@ -828,9 +833,15 @@ input {
 }
 
 .tab-container {
+  gap: 1rem;
   display: flex;
+  padding: 1rem;
+  margin-left: 8.5rem;
   justify-items: flex-end;
-  margin-left: 150px;
+}
+
+.tab-container button {
+  padding: 0.4rem;
 }
 
 .ranking-container h2 {
