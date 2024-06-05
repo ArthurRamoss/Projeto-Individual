@@ -43,20 +43,17 @@
 		FOREIGN KEY (fkPiloto) REFERENCES piloto(idPiloto)
 	);
 
-	CREATE TABLE quiz (
-	idQuiz int PRIMARY KEY AUTO_INCREMENT, 
-	AnoQuiz int
-	);
-
-	CREATE TABLE tentativa(
-	idQuiz int,
-	idUsuario int, 
-	acertos int,
-	erros int,
-	tempo float,
-	FOREIGN KEY (idQuiz) REFERENCES quiz(idQuiz),
-	FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario),
-	CONSTRAINT usuarioQuiz PRIMARY KEY (idQuiz, idUsuario));
+CREATE TABLE quiz (
+    idQuiz INT PRIMARY KEY AUTO_INCREMENT,
+    idUsuario INT, 
+    acertos INT,
+    erros INT,
+	tentativa INT,
+    tempo TIME(3),
+    tipoQuiz VARCHAR(50),
+    CHECK (tipoQuiz IN ('Historia', 'Equipes', 'Pilotos')),
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
+);
 
 	insert into equipe values 
 	(default, "Ferrari", "https://media.formula1.com/content/dam/fom-website/teams/2024/ferrari-logo.png", "https://media.formula1.com/d_team_car_fallback_image.png/content/dam/fom-website/teams/2024/ferrari.png", "A Ferrari é a equipe mais icônica e bem-sucedida da Fórmula 1, com uma história que remonta ao início da competição em 1950. Fundada por Enzo Ferrari, a Scuderia Ferrari rapidamente se estabeleceu como uma força dominante, conquistando seu primeiro título de construtores em 1961. A equipe acumulou inúmeros títulos ao longo das décadas, com grandes pilotos como Niki Lauda, Gilles Villeneuve e Michael Schumacher, que trouxe um renascimento nos anos 2000, conquistando cinco títulos consecutivos de pilotos de 2000 a 2004. Nos últimos anos, a Ferrari tem enfrentado desafios significativos. Após a era Schumacher, a equipe teve dificuldade em recuperar a consistência necessária para conquistar campeonatos. No entanto, a chegada de jovens talentos como Charles Leclerc trouxe nova esperança. Leclerc, com sua velocidade e determinação, conquistou várias vitórias e mostrou-se uma estrela em ascensão. Em 2023, sob a liderança de Frédéric Vasseur, a Ferrari tem se concentrado em melhorias técnicas e na confiabilidade do carro, buscando reduzir a diferença para as dominantes Red Bull e Mercedes. A equipe continua a desenvolver seu motor e chassi, buscando um equilíbrio perfeito entre potência e aerodinâmica. Com investimentos contínuos em tecnologia e inovação, a Ferrari almeja retornar ao topo, onde sua rica história e tradição exigem que esteja. A Scuderia Ferrari, com sua paixão inigualável e legião de fãs, mantém vivo o sonho de reconquistar a glória máxima na Fórmula 1, honrando seu legado e pavimentando o caminho para futuras gerações de campeões."),
@@ -93,10 +90,7 @@
 	(20, 24, 'https://media.formula1.com/d_default_fallback_image.png/content/dam/fom-website/2018-redesign-assets/drivers/number-logos/GUAZHO01.png', 'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/G/GUAZHO01_Guanyu_Zhou/guazho01.png', 'Zhou Guanyu', '1999-05-30', NULL, 10, 'Zhou Guanyu fez história ao se tornar o primeiro piloto chinês a competir na Fórmula 1, representando a Alfa Romeo em 2022. Desde uma idade precoce, Zhou foi apaixonado por corridas, tendo assistido ao Grande Prêmio de Xangai quando criança e torcido por Fernando Alonso. Determinado a se tornar o primeiro piloto chinês na F1, ele se mudou para a Inglaterra aos 12 anos para seguir sua carreira no automobilismo. Com o apoio da academia de pilotos da Ferrari e, posteriormente, da Renault, Zhou competiu na Fórmula 2, acumulando vitórias e pole positions ao longo de três temporadas. Sua performance impressionante chamou a atenção de Fred Vasseur, chefe de equipe da Alfa Romeo, que decidiu dar a Zhou a chance de realizar seu sonho na F1 em 2022. Ao lado de Valtteri Bottas, Zhou enfrentou o desafio de competir na categoria máxima do automobilismo e até mesmo competir contra seu herói de infância, Fernando Alonso.'),
     (21, 38, 'https://media.formula1.com/d_default_fallback_image.png/content/dam/fom-website/2018-redesign-assets/drivers/number-logos/OLIBEA01.png', 'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/O/OLIBEA01_Oliver_Bearman/olibea01.png', 'Oliver Bearman', '2005-05-08', NULL, 1, 'Oliver Bearman fez sua estreia surpreendente na Fórmula 1 durante o Grande Prêmio da Arábia Saudita, substituindo Carlos Sainz, que estava fora devido a apendicite. Aos 18 anos, Bearman é o reserva oficial da Ferrari e teve seu primeiro contato com os carros de Fórmula 1 no final do ano anterior, durante treinos livres 1 pela equipe Haas nos Grandes Prêmios do México e Abu Dhabi. Embora seja relativamente novo na cena da F1, Bearman já acumulou experiência em testes e competições na Fórmula 2 com a equipe Prema Racing. Sua habilidade foi demonstrada por suas quatro vitórias e sua posição de sexto na classificação da F2 no ano anterior. Após uma pole position impressionante em Jeddah, Bearman teve que interromper temporariamente sua campanha na F2 para assumir as responsabilidades de substituição de Sainz. Sua estreia na F1 foi marcada por uma performance notável, garantindo um sétimo lugar e seis pontos, o que certamente aumentou suas perspectivas futuras na categoria máxima do automobilismo.');
         
-        select * from piloto;
-        
-        
-        
 
-		
+    
+
 		
